@@ -1,0 +1,429 @@
+<!-- list -->
+<ul class="nav">
+  <li ng-if="isPrivilege('app.category') || isPrivilege('app.goodslist') || isPrivilege('app.banner') || isPrivilege('app.article') || isPrivilege('app.merchantgoods')" class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">商城管理</span>
+  </li>
+  <li ng-if="isPrivilege('app.category') || isPrivilege('app.goodslist') || isPrivilege('app.banner') || isPrivilege('app.article') || isPrivilege('app.merchantgoods')" ng-class="{active:$state.includes('app.goodslist') || $state.includes('app.welcome') || $state.includes('app.personal') || $state.includes('app.chgpwd') || $state.includes('app.category') || $state.includes('app.banner') || $state.includes('app.article') || $state.includes('app.merchantgoods')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-th-large icon text-success"></i>
+      <span class="font-bold">平台管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>商品管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.goodslist')">
+        <a ui-sref="app.goodslist">
+          <span>商品列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.category')">
+        <a ui-sref="app.category">
+          <span>分类管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.banner')">
+        <a ui-sref="app.banner">
+          <span>广告管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.article')">
+        <a ui-sref="app.article">
+          <span>文章管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.merchantgoods')">
+        <a ui-sref="app.merchantgoods">
+          <span>商家商品</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+   
+  <li ng-if="isPrivilege('app.orderlist') || isPrivilege('app.rankorder') || isPrivilege('app.sharemanager')" ng-class="{active:$state.includes('app.orderlist') || $state.includes('app.rankorder') || $state.includes('app.sharemanager')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-list text-primary"></i>
+      <span class="font-bold">订单管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>订单管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.orderlist')">
+        <a ui-sref="app.orderlist">
+          <span>订单列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.rankorder')">
+        <a ui-sref="app.rankorder">
+          <span>商家订单</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.sharemanager')">
+        <a ui-sref="app.sharemanager">
+          <span>分享管理</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-if="isPrivilege('app.orderlist') || isPrivilege('app.rankorder') || isPrivilege('app.sharemanager')" class="line dk"></li>
+  
+  
+  <li ng-if="isPrivilege('app.userlist') || isPrivilege('app.upgrade') || isPrivilege('app.userimport') || isPrivilege('app.quick') || isPrivilege('app.center') || isPrivilege('app.business') || isPrivilege('app.repeatcompensation')" class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.MEMBER">会员管理</span>
+  </li>
+  <li ng-if="isPrivilege('app.userlist') || isPrivilege('app.upgrade') || isPrivilege('app.userimport') || isPrivilege('app.quick') || isPrivilege('app.center') || isPrivilege('app.business') || isPrivilege('app.repeatcompensation')" ng-class="{active:$state.includes('app.userlist') || $state.includes('app.upgrade') || $state.includes('app.userimport') || $state.includes('app.quick') || $state.includes('app.center') || $state.includes('app.business') || $state.includes('app.repeatcompensation')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="icon-users text-info"></i>
+      <span class="font-bold">会员管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>会员管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.userlist')">
+        <a ui-sref="app.userlist">
+          <span>会员列表</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.upgrade')">
+        <a ui-sref="app.upgrade">
+          <span>升级记录</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.userimport')">
+        <a ui-sref="app.userimport">
+          <span>会员导入</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.quick')">
+        <a ui-sref="app.quick">
+          <span>快速报单</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.center')">
+        <a ui-sref="app.center">
+          <span>服务中心报单</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.business')">
+        <a ui-sref="app.business">
+          <span>商家结算</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.repeatcompensation')">
+        <a ui-sref="app.repeatcompensation">
+          <span>复投补偿</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-if="isPrivilege('app.userlist') || isPrivilege('app.upgrade') || isPrivilege('app.userimport') || isPrivilege('app.quick') || isPrivilege('app.center') || isPrivilege('app.business')" class="line dk"></li>
+  
+  
+  <li ng-if="isPrivilege('app.declaration') || isPrivilege('app.cashlist') || isPrivilege('app.commisionlist') || isPrivilege('app.exchangelist') || isPrivilege('app.consumelist') || isPrivilege('app.useablelist') || isPrivilege('app.sharelist') || isPrivilege('app.wallet')" class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.FINACIAL">财务统计</span>
+  </li>
+  <li ng-if="isPrivilege('app.declaration') || isPrivilege('app.cashlist') || isPrivilege('app.commisionlist') || isPrivilege('app.exchangelist') || isPrivilege('app.consumelist') || isPrivilege('app.useablelist') || isPrivilege('app.sharelist') || isPrivilege('app.wallet')" ng-class="{active:$state.includes('app.declaration') || $state.includes('app.cashlist') || $state.includes('app.commisionlist') || $state.includes('app.exchangelist') || $state.includes('app.consumelist') || $state.includes('app.useablelist') || $state.includes('app.sharelist') || $state.includes('app.wallet')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="fa fa-rmb icon text-warning"></i>
+      <span class="font-bold">财务明细</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>财务明细</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.declaration')">
+        <a ui-sref="app.declaration">
+          <span>报单记录</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.cashlist')">
+        <a ui-sref="app.cashlist">
+          <span>现金记录</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.commisionlist')">
+        <a ui-sref="app.commisionlist">
+          <span>佣金记录</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.exchangelist')">
+        <a ui-sref="app.exchangelist">
+          <span>购物券</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.consumelist')">
+        <a ui-sref="app.consumelist">
+          <span>消费积分</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.useablelist')">
+        <a ui-sref="app.useablelist">
+          <span>可用积分</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.sharelist')">
+        <a ui-sref="app.sharelist">
+          <span>分享积分</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.wallet')">
+        <a ui-sref="app.wallet">
+          <span>支出记录</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  
+  <li ng-if="isPrivilege('app.waitlist') || isPrivilege('app.takecash') || isPrivilege('app.repeatmanager')" ng-class="{active:$state.includes('app.waitlist') || $state.includes('app.takecash') || $state.includes('app.repeatmanager')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="icon icon-tag text-six"></i>
+      <span class="font-bold">财务管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>财务管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.waitlist')">
+        <a ui-sref="app.waitlist">
+          <span>待用积分</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.takecash')">
+        <a ui-sref="app.takecash">
+          <span>提现管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.repeatmanager')">
+        <a ui-sref="app.repeatmanager">
+          <span>复投管理</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+   
+  <li ng-if="isPrivilege('app.shareholder') || isPrivilege('app.merchant') || isPrivilege('app.salerank') || isPrivilege('app.salegoods') || isPrivilege('app.consumerank') || isPrivilege('app.declarationrank') || isPrivilege('app.memberrank')" ng-class="{active:$state.includes('app.shareholder') || $state.includes('app.merchant') || $state.includes('app.salerank') || $state.includes('app.salegoods') || $state.includes('app.consumerank') || $state.includes('app.declarationrank') || $state.includes('app.memberrank')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="icon icon-bar-chart text-nine"></i>
+      <span class="font-bold">数据统计</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>数据统计</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.shareholder')">
+        <a ui-sref="app.shareholder">
+          <span>股东对比</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.merchant')">
+        <a ui-sref="app.merchant">
+          <span>商家排行</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.salerank')">
+        <a ui-sref="app.salerank">
+          <span>销售统计</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.salegoods')">
+        <a ui-sref="app.salegoods">
+          <span>销量排行</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.consumerank')">
+        <a ui-sref="app.consumerank">
+          <span>消费排行</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.declarationrank')">
+        <a ui-sref="app.declarationrank">
+          <span>报单排行</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.memberrank')">
+        <a ui-sref="app.memberrank">
+          <span>会员排行</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-if="isPrivilege('app.shareholder') || isPrivilege('app.merchant') || isPrivilege('app.salerank') || isPrivilege('app.salegoods') || isPrivilege('app.consumerank') || isPrivilege('app.declarationrank') || isPrivilege('app.memberrank')" class="line dk"></li>
+
+
+  <li ng-if="isPrivilege('app.message')" class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+    <span translate="aside.nav.WIDGETS">营销插件</span>
+  </li> 
+  <li ng-if="isPrivilege('app.commisionsetting') || isPrivilege('app.declarationsetting') || isPrivilege('app.servicesetting') || isPrivilege('app.logistic') || isPrivilege('app.ercode')" ng-class="{active:$state.includes('app.commisionsetting') || $state.includes('app.declarationsetting') || $state.includes('app.servicesetting') || $state.includes('app.logistic') || $state.includes('app.ercode')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="icon icon-puzzle text-success"></i>
+      <span class="font-bold">营销管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>营销管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.commisionsetting')">
+        <a ui-sref="app.commisionsetting">
+          <span>佣金设置</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.declarationsetting')">
+        <a ui-sref="app.declarationsetting">
+          <span>报单设置</span>
+        </a>
+      </li>
+      <li class="hide" ui-sref-active="active" ng-if="isPrivilege('app.servicesetting')">
+        <a ui-sref="app.servicesetting">
+          <span>服务中心设置</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.logistic')">
+        <a ui-sref="app.logistic">
+          <span>邮费设置</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.ercode')">
+        <a ui-sref="app.ercode">
+          <span>海报设置</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-if="isPrivilege('app.message') || isPrivilege('app.smstemplate')" ng-class="{active:$state.includes('app.message') || $state.includes('app.smstemplate')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="icon-paper-plane text-seven"></i>
+      <span class="font-bold">插件管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>插件管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.message')">
+        <a ui-sref="app.message">
+          <span>短信记录</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.smstemplate')">
+        <a ui-sref="app.smstemplate">
+          <span>短信模板</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-if="isPrivilege('app.commisionsetting') || isPrivilege('app.declarationsetting') || isPrivilege('app.servicesetting') || isPrivilege('app.logistic') || isPrivilege('app.message') || isPrivilege('app.smstemplate')" class="line dk"></li>
+
+
+  <li ng-if="isPrivilege('app.system') || isPrivilege('app.adminsetting') || isPrivilege('app.privilege') || isPrivilege('app.role') || isPrivilege('app.smssetting') || isPrivilege('app.log') || isPrivilege('app.wechatsetting') || isPrivilege('app.department')" class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+    <span translate="aside.nav.your_stuff.YOUR_STUFF">系统管理</span>
+  </li> 
+  <li ng-if="isPrivilege('app.system') || isPrivilege('app.adminsetting') || isPrivilege('app.privilege') || isPrivilege('app.role') || isPrivilege('app.smssetting') || isPrivilege('app.log') || isPrivilege('app.wechatsetting') || isPrivilege('app.department')" ng-class="{active:$state.includes('app.system') || $state.includes('app.adminsetting') || $state.includes('app.privilege') || $state.includes('app.role') || $state.includes('app.log') || $state.includes('app.smssetting') || $state.includes('app.wechatsetting') || $state.includes('app.department')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="icon-grid text-danger"></i>
+      <span class="font-bold">系统管理</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span>系统管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.system')">
+        <a ui-sref="app.system">
+          <span>系统设置</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.department')">
+        <a ui-sref="app.department">
+          <span>部门管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.adminsetting" ng-if="isPrivilege('app.adminsetting')">
+          <span>管理员管理</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.privilege')">
+        <a ui-sref="app.privilege">
+          <span>权限设置</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.role')">
+        <a ui-sref="app.role">
+          <span>角色设置</span>
+        </a>
+      </li>
+      <li class="hide" ui-sref-active="active" ng-if="isPrivilege('app.wechatsetting')">
+        <a ui-sref="app.wechatsetting">
+          <span>公众号设置</span>
+        </a>
+      </li>
+      <li class="hide" ui-sref-active="active" ng-if="isPrivilege('app.smssetting')">
+        <a ui-sref="app.smssetting">
+          <span>短信设置</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="isPrivilege('app.log')">
+        <a ui-sref="app.log">
+          <span>日志管理</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-if="isPrivilege('app.system') || isPrivilege('app.adminsetting') || isPrivilege('app.privilege') || isPrivilege('app.role') || isPrivilege('app.smssetting') || isPrivilege('app.log') || isPrivilege('app.wechatsetting') || isPrivilege('app.department')" class="line dk hidden-folded"></li>
+</ul>
+<!-- / list -->

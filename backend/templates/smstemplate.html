@@ -1,0 +1,58 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="SmsTemplateCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	    <span>
+	        <h1 class="m-n font-thin h3 inline-block">短信模板管理</h1>
+	        <h5 class="m-n font-thin h5 inline-block sms_sub_title">大括号“<font>{}</font>”及里面的<font>单词</font>请不要替换掉</h5>
+	    </span>
+	</div>
+	<br/>
+	<div class="template_list relative">
+	    <div class="yp-mask-content" ng-show="loading">
+		   <div class="yp-mask"></div>
+		   <div class="yp-mask-loading">
+		      <div class="spinner spinner-sm"> 
+		         <div class="rect1"></div> 
+		         <div class="rect2"></div> 
+		         <div class="rect3"></div> 
+		         <div class="rect4"></div> 
+		         <div class="rect5"></div> 
+		      </div>
+		   </div>
+		</div>
+	    <div class="col-lg-6" ng-repeat="item in templateList" ng-if="templateList.length > 0">
+		    <div class="panel panel-default">
+		        <div class="panel-heading">
+		           <span>{{item.name}}</span>
+		           <span class="float-right">
+		              <span class="relative" style="top:-10px; left: 15px;">是否开启</span>
+		              <label class="i-switch bg-info m-t-xs m-r align-left relative" style="top:-5px; left: 15px;">
+			             <input type="checkbox" ng-model="item.open" ng-change="switch_status(item)"/>
+			             <i></i>
+			          </label>
+		           </span>
+		        </div>
+		        <div class="panel-body">
+		           <textarea class="form-control" rows="4" placeholder="{{item.placeholder}}" ng-model="item.content"></textarea>
+		        </div>
+		        <footer class="panel-footer text-right bg-light lter">
+		           <span class="pull-left">关键字：</span><span class="pull-left text-danger m-r" ng-repeat="key in item.keys">{{key}}</span>
+	               <button type="button" ng-click="editTemplate(item)" class="btn btn-sm btn-success" ng-if="isOperate('app.smstemplate')">提交</button>
+	            </footer>
+		    </div>
+	    </div>
+	    <div class="col-lg-6" ng-if="templateList.length == 0 && !loading">还没有模板</div>
+    </div>     
+  </div>
+  <!-- /column -->
+</div>
+<!-- /hbox layout -->

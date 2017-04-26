@@ -1,0 +1,83 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="CategoryCtrl">
+  <div class="col w-lg bg-light b-r bg-auto">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	  <h1 class="m-n font-thin h3">分类管理</h1>
+	</div>
+    <div class="wrapper-md">
+      <div class="b-a bg-light dk r r-2x">
+        <span ng-if="loading">加载中...</span>
+        <abn-tree 
+          ng-if="!loading" 
+          tree-data         = "my_data" 
+          tree-control      = "my_tree" 
+          on-select         = "my_tree_handler(branch)" 
+          expand-level      = "2" 
+          initial-selection = "全部"
+          icon-leaf         = "fa fa-angle-double-right"
+          icon-expand       = "fa fa-plus"
+          icon-collapse     = "fa fa-minus"
+          >
+        </abn-tree>
+      </div> 
+    </div>
+  </div>
+  <div class="col">
+       <div class="bg-light lter b-b wrapper-md ng-scope relative">
+	       <h1 class="m-n font-thin h3 visibility-hidden">分类管理</h1>
+	       <div class="override"></div>
+	   </div>
+       <div class="wrapper-md" ng-show="rightColShow">
+           <div class="branch_title">
+              <span>{{output}}</span>
+           </div>
+           <div class="line b-b line-lg"></div>
+           
+           <ul class="nav nav-pills nav-sm">
+	          <li ng-class="{active:tabs[0]}" ng-click="insertTree()"><a href=""><i class="fa fa-fw m-r-xs fa-plus"></i>新建子节点</a></li>
+	          <li ng-class="{active:tabs[1]}" ng-click="updatetTree()"><a href=""><i class="fa fa-fw m-r-xs fa-edit"></i>修改节点</a></li>
+	          <li ng-if="1==2" ng-class="{active:tabs[2]}" ng-click="insertRootTree()"><a href=""><i class="fa fa-fw m-r-xs fa-plus"></i>新建根节点</a></li>
+	          <li ng-class="{active:tabs[3]}" ng-click="deleteNote()"><a href=""><i class="fa fa-fw m-r-xs fa-trash-o"></i>删除节点</a></li>
+	       </ul>
+	       <div class="line b-b line-lg"></div>
+	        
+	       <br/>
+	       <div ng-show="editing" class="relative">
+		       <label>分支名称</label>
+		       <input type="text" class="form-control cate-promote-input" placeholder="请输入分支名称" ng-model="editItem.label"><br/>
+		       
+	           <label>导航顺序</label>
+		       <input type="text" class="form-control cate-promote-input" placeholder="请输入导航顺序" ng-model="editItem.orderby"><br/>
+		       
+		       <div class="multiple-file-select relative b-a cate-promote-input">
+		          <span class="glyphicon glyphicon-folder-open"></span>
+			      <p class="file-type-name">选择封面图片</p>
+			      <input class="file-select-no-visibile" type="file" nv-file-select="" uploader="uploader" id="fileInput"/>
+		       </div>
+		       <div class="b-a bg-white cate-promote-img">
+		          <div class="bg-light relative cate-promote-img-border">
+		               <img ng-src="{{data.bgImage}}" id="preview"/>
+		          </div>
+		       </div>
+		       
+		       <div ng-if="data.bgImage">
+			       <label>首页是否开启</label>
+			       <label class="i-switch bg-info m-t-xs m-r align-left relative" style="top:4px; left: 15px;">
+		              <input type="checkbox" ng-model="editItem.open"/>
+		              <i></i>
+		           </label>
+	           </div>
+		       
+		       <div ng-if="!editItem.isNew">
+		           <label>分类链接：{{editItem.url}}</label>
+		       </div>
+		       
+		       <button type="button" class="btn btn-sm btn-primary" ng-click="submitBranch()" ng-if="isOperate('app.category')">提交</button>
+	       </div>
+	   </div>
+	   <div class="wrapper-md" ng-hide="rightColShow">
+	       <p>请先选择分支！</p>
+	   </div>
+	   			   
+  </div>
+</div>
+

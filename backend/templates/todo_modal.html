@@ -1,0 +1,152 @@
+<div>
+	<div class="modal-header relative">
+	    <h3 class="modal-title">订单处理</h3>
+	    <h4 class="order-status">{{item.status == 0 ? '待支付' : item.status == 1 ? '待发货' : item.status == 2 ? '已发货' : item.status == 3 ? '已完成' : '已关闭'}}</h4>
+	</div>
+	<div class="modal-body">
+	    <div class="order-info-modal">
+	        <div class="title">
+	            <span>订单详情</span>
+	        </div>
+	        <div class="detail">
+	            <table>
+	               <tr>
+	                  <td>订单编号：{{item.order_id}}</td><td>下单时间：{{item.created_at}}</td>
+	               </tr>
+	               <tr>
+	                  <td>买家姓名：{{item.name && item.mobile ? item.name + '(' + item.mobile + ')' : item.name ? item.name : item.mobile ? item.mobile : '无'}}</td>
+	                  <td>支付时间：{{item.pay_time ? item.pay_time : '--'}}</td>
+	               </tr>
+	               <tr>
+	                  <td>归属商家：{{item.com_name && item.com_mobile ? item.com_name + '(' + item.com_mobile + ')' : item.com_name ? item.com_name : item.com_mobile ? item.com_mobile : '无'}}</td>
+	                  <td>发货时间：{{item.logistic_time ? item.logistic_time : '--'}}</td>
+	               </tr>
+	               <tr>
+	                  <td>兑换金额：{{item.total_point_price + '分'}}{{item.total_cash_price > 0 ? ' + ' + item.total_cash_price + '元' : ''}}</td>
+	                  <td>完成时间：{{item.complete_time ? item.complete_time : '--'}}</td>
+	               </tr>
+	               <tr>
+	                  <td>兑换方式：{{item.share_id == 0 && item.goods_model == 1 ? '购物券' : item.share_id == 0 && item.goods_model == 2 ? '消费积分' : item.share_id == 0 && item.goods_model == 3 ? '消费积分 + 现金' : '分享价（现金）'}}</td>
+	                  <td>支付编号：{{item.pay_no ? item.pay_no : '--'}}</td>
+	               </tr>
+	               <tr>
+	                  <td colspan="2">订单留言：{{item.memo}}</td>
+	               </tr>
+	            </table>
+	        </div>
+	        
+	        <div class="title">
+	            <span>商品详情</span>
+	        </div>
+	        <div class="goodsdetail">
+	            <table class="table">
+	               <tr>
+	                  <th>商品名称</th><th>兑换方式</th><th>单价</th><th>运费</th><th>数量</th><th ng-if="item.size_op">规格</th>
+	               </tr>
+	               <tr>
+	                  <td>{{item.goods_name}}</td>
+	                  <td>{{item.share_id == 0 && item.goods_model == 1 ? '购物券' : item.share_id == 0 && item.goods_model == 2 ? '消费积分' : item.share_id == 0 && item.goods_model == 3 ? '消费积分 + 现金' : '分享价（现金）'}}</td>
+	                  <td>{{item.share_id == 0 && (item.goods_model == 1 || item.goods_model == 2) ? item.point_price + '分' : item.share_id == 0 && item.goods_model == 3 ? item.point_price + '分 + ' + item.cash_price + '元' : item.cash_price + '元'}}</td>
+	                  <td>{{item.logistic_fee > 0 ? item.logistic_fee + '元' : '免邮'}}</td>
+	                  <td>{{item.num}}</td>
+	                  <td ng-if="item.size_op">{{item.size_op}}</td>
+	               </tr>
+	            </table>
+	        </div>
+	        
+	        <div class="title">
+	            <span>配送详情</span>
+	        </div>
+	        <div class="logisticdetail">
+	            <form name="formMsg" ng-if="item.status == 1 || item.status == 2">
+		            <table>
+		               <tr>
+		                  <td>
+		                     <span class="title">收货人：</span>
+		                     <span class="input-info" ng-if="item.status != 1">{{item.order_address.userName}}</span>
+		                     <span class="input-info" ng-if="item.status == 1"><input type="text" class="form-control" placeholder="请输入收货人" ng-model="item.order_address.userName" required></span>
+		                  </td>
+		                  <td>
+		                     <span class="title">快递公司：</span>
+		                     <span class="input-info"><input type="text" class="form-control" placeholder="请输入备注" ng-model="item.order_address.logisticName" required></span>
+		                  </td>
+		               </tr>
+		               <tr>
+		                  <td>
+		                     <span class="title">手机：</span>
+		                     <span class="input-info" ng-if="item.status != 1">{{item.order_address.telNumber}}</span>
+		                     <span class="input-info" ng-if="item.status == 1"><input type="text" class="form-control" placeholder="请输入手机" ng-model="item.order_address.telNumber" required></span>
+		                  </td>
+		                  <td>
+		                     <span class="title">快递编号：</span>
+		                     <span class="input-info"><input type="text" class="form-control" placeholder="请输入备注" ng-model="item.order_address.logisticNo" required></span>
+		                  </td>
+		               </tr>
+		               <tr>
+		                  <td>
+		                     <span class="title" ng-if="item.status != 1">地址：</span>
+		                     <span class="title relative" ng-if="item.status == 1" style="top: -45px;">地址：</span>
+		                     <span class="input-info" ng-if="item.status != 1">{{item.order_address.provinceName}}{{item.order_address.cityName}}{{item.order_address.countryName}}{{item.order_address.detailInfo}}</span>
+		                     <span class="input-info" ng-if="item.status == 1">
+                                 <input type="text" style="width:95px; display:inline-block;" class="form-control" placeholder="请输入省份" ng-model="item.order_address.provinceName" required>
+		                         <input type="text" style="width:100px; display:inline-block;" class="form-control" placeholder="请输入市" ng-model="item.order_address.cityName" required>
+		                         <input type="text" style="width:95px; display:inline-block;" class="form-control" placeholder="请输入城区或市县" ng-model="item.order_address.countryName" required>
+		                         <input type="text" style="width:298px; margin-top: 10px; display:inline-block;" class="form-control" placeholder="请输入详细地址" ng-model="item.order_address.detailInfo" required>
+		                     </span>
+		                  </td>
+		                  <td>
+		                     <span class="title">备注：</span>
+		                     <span class="input-info"><input type="text" class="form-control" placeholder="请输入备注" ng-model="item.order_address.memo" required></span>
+		                  </td>
+		               </tr>
+		            </table>
+	            </form>
+	            <div ng-if="item.status != 1 && item.status != 2">
+	                <table>
+		               <tr>
+		                  <td>
+		                     <span class="title">收货人：</span>
+		                     <span class="input-info">{{item.order_address.userName}}</span>
+		                  </td>
+		                  <td>
+		                     <span class="title">快递公司：</span>
+		                     <span class="input-info">{{item.order_address.logisticName ? item.order_address.logisticName : '--'}}</span>
+		                  </td>
+		               </tr>
+		               <tr>
+		                  <td>
+		                     <span class="title">手机：</span>
+		                     <span class="input-info">{{item.order_address.telNumber}}</span>
+		                  </td>
+		                  <td>
+		                     <span class="title">快递编号：</span>
+		                     <span class="input-info">{{item.order_address.logisticNo ? item.order_address.logisticNo : '--'}}</span>
+		                  </td>
+		               </tr>
+		               <tr>
+		                  <td>
+		                     <span class="title">地址：</span>
+		                     <span class="input-info">{{item.order_address.provinceName}}{{item.order_address.cityName}}{{item.order_address.countryName}}{{item.order_address.detailInfo}}</span>
+		                  </td>
+		                  <td>
+		                     <span class="title">备注：</span>
+		                     <span class="input-info">{{item.order_address.memo ? item.order_address.memo : '--'}}</span>
+		                  </td>
+		               </tr>
+		            </table>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="modal-footer"> 
+	    <span ng-if="item.status == 1" style="float: left; color: red;">地址：{{item.order_address.provinceName}}{{item.order_address.cityName}}{{item.order_address.countryName}}{{item.order_address.detailInfo}}</span>
+	    <button ng-if="item.status == 7" class="btn btn-success" ng-click="check('agree')">{{agree_html}}</button>
+	    <button ng-if="item.status == 7" class="btn btn-danger" ng-click="check('disagree')">{{disagree_html}}</button>
+	    <button ng-if="item.status == 1 || item.status == 2" class="btn btn-danger" ng-click="modify()">{{modify_html}}</button>
+	    <button ng-if="item.status == 0" class="btn btn-warning" ng-click="close()">{{close_html}}</button>
+	    <button ng-if="item.status == 1 || item.status == 2" class="btn btn-warning" ng-click="refund()">{{refund_html}}</button>
+	    <button ng-if="item.status == 1" class="btn btn-info" ng-disabled='formMsg.$invalid' ng-click="send()">{{send_html}}</button>
+	    <button ng-if="item.status == 2" class="btn btn-success" ng-click="sure()">{{sure_html}}</button>
+	    <button class="btn btn-primary" ng-click="cancle()">返回</button>
+	</div>
+</div>

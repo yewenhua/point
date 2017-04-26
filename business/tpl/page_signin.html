@@ -1,0 +1,20 @@
+<div class="siginin_bg" ng-controller="SigninFormController">
+   <div class="siginin_login_outer"></div>
+   <div class="siginin_login_bg">
+      <div class="siginin_title_outer"></div>
+      <div class="siginin_title_bg">
+          <img src="/business/img/logo.png"/>
+          <span class="siginin_title">{{systemInfo.signin_title}}</span>
+      </div>
+      <form name="form">
+	      <input type="text" placeholder="请输入手机号码" class="siginin_name" ng-model="user.name" required/>
+	      <i class="glyphicon glyphicon-user"></i>
+	      <input type="password" placeholder="请输入密码" class="siginin_pwd" ng-model="user.password" required/>
+	      <i class="glyphicon glyphicon-lock"></i>
+	      <button type="submit" class="siginin_btn" ng-click="login()" ng-disabled='form.$invalid'>{{loginHtml}}</button>
+      </form>
+   </div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>

@@ -1,0 +1,133 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="ConsumelistCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	    <h1 class="m-n font-thin h3">消费积分</h1>
+	</div>
+    <div class="wrapper-md">
+        <div class="input-group weekcheck-search-area relative">
+           <span class="input-group-addon input-sm" ng-click="searchData()"><i class="fa fa-search"></i></span>
+           <input type="text" class="form-control input-sm ng-pristine ng-valid ng-touched input-search-width" placeholder="姓名、手机、订单" style="width:109px; padding:5px;" ng-model="query" ng-enter="searchData()">
+           <!-- 
+           <input singledatepicker ng-model="dateSelectSingle" type="text" class="timeinput" style="margin-left:10px; height:30px; width:120px;" placeholder="选择时间搜索" readonly="readonly" />
+            -->
+           
+           <input daterange="daterange" type="text" class="m-l widthdirective dateranges timeinputrange" ng-model="dateSelectRange" min-date="2016-01-01" placeholder="按时间段搜索" id="dateranges" style="margin-left: 8px;"/>
+           <div class="btn-group float-right">
+              <label class="btn btn-sm btn-dark ng-untouched ng-valid ng-dirty type-label-small-consume" ng-model="radioModel" btn-radio="99"><i class="fa fa-check text-active"></i> 全部</label>
+	          <label class="btn btn-sm btn-success ng-untouched ng-valid ng-dirty user-type-label user-type-label-consume" ng-model="radioModel" btn-radio="1"><i class="fa fa-check text-active"></i> 可用转入</label>
+	          <label class="btn btn-sm btn-primary ng-untouched ng-valid ng-dirty active ng-valid-parse user-type-label-consume" ng-model="radioModel" btn-radio="2"><i class="fa fa-check text-active"></i> 积分转让</label>
+	          <label class="btn btn-sm btn-info ng-untouched ng-valid ng-dirty user-type-label-small" ng-model="radioModel" btn-radio="3"><i class="fa fa-check text-active"></i> 充值</label>
+	          <label class="btn btn-sm btn-warning ng-untouched ng-valid ng-dirty active ng-valid-parse type-label-small-consume" ng-model="radioModel" btn-radio="4"><i class="fa fa-check text-active"></i> 兑换</label>
+	          <label class="btn btn-sm btn-default ng-untouched ng-valid ng-dirty active ng-valid-parse type-label-small-consume" ng-model="radioModel" btn-radio="5"><i class="fa fa-check text-active"></i> 升级</label>
+	          <label class="btn btn-sm btn-six ng-untouched ng-valid ng-dirty active ng-valid-parse type-label-small-consume" ng-model="radioModel" btn-radio="6"><i class="fa fa-check text-active"></i> 分享</label>
+	          <label class="btn btn-sm btn-seven ng-untouched ng-valid ng-dirty active ng-valid-parse type-label-small-consume" ng-model="radioModel" btn-radio="7"><i class="fa fa-check text-active"></i> 报单</label>
+	          <label class="btn btn-sm btn-danger ng-untouched ng-valid ng-dirty active ng-valid-parse type-label-small-consume" ng-model="radioModel" btn-radio="8"><i class="fa fa-check text-active"></i> 退款</label>
+	          <label class="btn btn-sm btn-nine ng-untouched ng-valid ng-dirty active ng-valid-parse user-type-label-consume" ng-model="radioModel" btn-radio="9"><i class="fa fa-check text-active"></i> 推荐商家</label>
+	          <label class="btn btn-sm btn-ten ng-untouched ng-valid ng-dirty active ng-valid-parse user-type-label-consume" ng-model="radioModel" btn-radio="10"><i class="fa fa-check text-active"></i> 兑充升级</label>
+	          <label class="btn btn-sm btn-eleven ng-untouched ng-valid ng-dirty active ng-valid-parse user-type-label-consume" ng-model="radioModel" btn-radio="11"><i class="fa fa-check text-active"></i> 商家结算</label>
+	          <label class="btn btn-sm btn-twelve ng-untouched ng-valid ng-dirty active ng-valid-parse user-type-label-consume" ng-model="radioModel" btn-radio="12"><i class="fa fa-check text-active"></i> 订单结算</label>
+	          <label class="btn btn-sm btn-thirteen ng-untouched ng-valid ng-dirty active ng-valid-parse user-type-label-consume" ng-model="radioModel" btn-radio="13"><i class="fa fa-check text-active"></i> 商品分享</label>
+	          <label class="btn btn-sm btn-fourteen ng-untouched ng-valid ng-dirty active ng-valid-parse user-type-label-consume" ng-model="radioModel" btn-radio="14"><i class="fa fa-check text-active"></i> 分享结算</label>
+	       </div>
+        </div>
+        <br/>
+        <div class="panel panel-default relative">
+            <div class="yp-mask-content" ng-show="loading">
+			   <div class="yp-mask"></div>
+			   <div class="yp-mask-loading">
+			      <div class="spinner spinner-sm"> 
+			         <div class="rect1"></div> 
+			         <div class="rect2"></div> 
+			         <div class="rect3"></div> 
+			         <div class="rect4"></div> 
+			         <div class="rect5"></div> 
+			      </div>
+			   </div>
+			</div>
+		    <div class="panel-heading">
+		       <span>消费积分</span>
+		       <span class="float-right">
+				    <span>正值总积分：<font class="text-success">{{plusPoint}}</font>分，</span>
+				    <span>负值总积分：<font class="text-danger">{{minusPoint}}</font>分</span>
+			   </span>
+		    </div>
+		    <div>
+	           <table class="table m-b-none align-center yearplan">
+			       <thead>
+			          <tr>
+			              <th class="select-all" ng-show="isOperate('app.consumelist')">
+			                  <label class="i-checks">
+				                <input type="checkbox" ng-model="selectAll">
+				                <i></i>
+				              </label>
+			              </th>
+			              <th>序号</th>
+			              <th><span class="article-hundred-max-width">姓名（手机）</span></th>
+			              <th>积分</th>
+			              <th><span class="article-hundred-max-width">订单号</span></th>
+			              <th>类型</th>
+			              <th>创建时间</th>
+			              <th><span class="article-hundred-max-width">备注</span></th>
+			          </tr>
+			       </thead>
+			       <tbody class="article_table">
+			          <tr ng-repeat="item in dataList">
+			              <td  class="select-item" ng-show="isOperate('app.consumelist')">
+			                  <label class="i-checks">
+				                <input type="checkbox" ng-model="item.selected">
+				                <i></i>
+				              </label>
+			              </td>
+			              <td ng-cloak>{{(page - 1) * perPage + $index + 1}}</td>
+			              <td ng-cloak title="{{item.name && item.mobile ? item.name + '(' + item.mobile + ')' : item.name ? item.name : item.mobile ? item.mobile : '--'}}"><span class="article-hundred-max-width">{{item.name && item.mobile ? item.name + '(' + item.mobile + ')' : item.name ? item.name : item.mobile ? item.mobile : '--'}}</span></td>
+			              <td ng-cloak class="{{item.reason == 1 ? 'text-danger' : item.reason == 2 ? 'text-success' : ''}}">{{item.reason == 1 ? '-' : '+'}}{{item.point ? item.point : ''}}</td>
+			              <td ng-cloak title="{{item.order_id ? item.order_id : '--'}}"><span class="article-hundred-max-width">{{item.order_id ? item.order_id : '--'}}</span></td>
+			              <td ng-cloak class="{{item.type == 1 ? 'text-success' : item.type == 2 ? 'text-primary' : item.type == 3 ? 'text-info' : item.type == 4 ? 'text-warning' : item.type == 5 ? 'text-default' : item.type == 6 ? 'text-six' : item.type == 7 ? 'text-seven' : item.type == 8 ? 'text-danger' : item.type == 9 ? 'text-nine' : item.type == 10 ? 'text-ten' : item.type == 11 ? 'text-eleven' : item.type == 12 ? 'text-twelve' : item.type == 13 ? 'text-thirteen' : 'text-fourteen'}}">{{item.type == 1 ? '可用转入' : item.type == 2 ? '积分转让' : item.type == 3 ? '充值' : item.type == 4 ? '兑换' : item.type == 5 ? '升级' : item.type == 6 ? '分享' : item.type == 7 ? '报单' : item.type == 8 ? '退款' : item.type == 9 ? '推荐商家' : item.type == 10 ? '兑充升级' : item.type == 11 ? '商家结算' : item.type == 12 ? '订单结算' : item.type == 13 ? '商品分享' : '分享结算'}}</td>
+			              <td ng-cloak>{{item.created_at ? item.created_at.substring(0, 16) : '--'}}</td>
+			              <td ng-cloak title="{{item.mark ? item.mark : '--'}}"><span class="article-hundred-max-width">{{item.mark ? item.mark : '--'}}</span></td>
+			          </tr>
+			          <tr ng-if="!haveData">
+			              <td colspan="8" class="text-center">没有数据！</td>
+			          </tr>
+			       </tbody>
+			       <tfoot class="hide-if-no-paging" ng-show="haveData">
+			          <tr>
+			              <td colspan="1" class="relative">
+			                  <div class="yearlan-status" ng-show="!loading">
+				                  <button ng-if="dataList.length > 1" class="btn btn-sm btn-danger" ng-disabled="all_delete_disabled" ng-click="deleteBatch()"><i class="fa fa-fw m-r-xs fa-trash-o"></i>{{all_delete_html}}</button>
+			                  </div>
+			              </td>
+			              <td colspan="7" class="text-center">
+			                  <div class="page-content" ng-hide="loading">
+					               <ul class="divpage-ul ul-border-left" id="divpage-page">
+						             <li class="divpage" ng-click="getInfoPage(1)" ng-class="{true:'disable'}[isFirst(page)]">首页</li>
+						             <li class="divpage" ng-click="getInfoPage(page-1)" ng-class="{true:'disable'}[isFirst(page)]">上一页</li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="getInfoPage(page + 1)" ng-class="{'disable':isDisable(page)}">下一页</li>
+						             <li class="divpage" ng-click="getInfoPage(totalPage)" ng-class="{'disable':isDisable(page)}">尾页</li>
+						          </ul>
+					           </div>
+			              </td>
+			          </tr>
+			       </tfoot>
+		      </table>
+		   </div>
+	  </div>
+
+	  
+	</div>
+  </div>
+  <!-- /column -->
+</div>

@@ -1,0 +1,200 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="ErcodeCtrl" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+
+  <div class="col w-lg-haibao bg-light b-r bg-auto">
+    <div class="wrapper-md b-b">
+      <h3 class="m-n font-thin">海报预览</h3>
+    </div>
+    <div class="wrapper-md">      
+      <div class="multiple-file-select relative b-a">
+          <span class="glyphicon glyphicon-folder-open"></span>
+	      <p class="file-type-name">选择背景图片</p>
+	      <input class="file-select-no-visibile" type="file" nv-file-select="" uploader="uploader" id="fileInput"/>
+      </div>
+      
+      <div class="wrapper-sm b-a bg-white">
+          <div class="bg-light relative poster" id="poster">
+               <img ng-src="{{data.bgImage}}" />
+          </div>
+      </div>
+      <div class="poster-size">高504 * 宽320</div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <div class="wrapper-md b-b">
+        <h3 class="m-n font-thin">海报设置</h3>
+    </div>
+    <div class="wrapper-md relative">  
+        <div class="form-group" style="margin-top:100px;">
+	       <div><label class="control-label">海报元素</label></div>
+	       <div class="poster-ele">
+	           <button class="btn m-b-xs btn-sm btn-info btn-addon btn-head" data-type="head"><i class="fa fa-plus"></i>头像</button>
+	       </div>
+	       <div class="poster-ele">
+	           <button class="btn m-b-xs btn-sm btn-danger btn-addon btn-nickname" data-type="nickname"><i class="fa fa-plus"></i>昵称</button>
+	       </div>
+	       <div class="poster-ele">
+	           <button class="btn m-b-xs btn-sm btn-primary btn-addon btn-qr" data-type="qr"><i class="fa fa-plus"></i>二维码</button>
+	       </div>
+	       <!-- 
+	       <div class="poster-ele">
+	           <button class="btn m-b-xs btn-sm btn-warning btn-addon btn-desc" data-type="desc"><i class="fa fa-plus"></i>描述</button>
+	       </div>
+	        -->
+	    </div>
+	    
+	    <div id="nameset" style="display:none">
+	        <div class="form-group">
+	           <div><label class="control-label">昵称颜色</label></div>
+	           <div style="width:320px;">
+					<div class="row-fix">
+						<div style="padding-right:0;">
+							<div class="input-group">
+								<input class="form-control" type="text" name="color" placeholder="请选择颜色" value="">
+								<span class="input-group-addon bg-color" style="width:35px;border-left:none;background-color:"></span>
+								<span class="input-group-btn">
+									<button class="btn btn-default colorpicker" type="button">选择颜色 <i class="fa fa-caret-down"></i></button>
+									<button class="btn btn-default colorclean" type="button"><span><i class="fa fa-remove"></i></span></button>
+								</span>
+							</div>
+						</div>
+					</div>
+			    </div>
+	        </div>
+	        <div class="clear"></div>
+	        <div class="form-group">
+	            <div>
+	                <label class="control-label">昵称大小</label>
+	            </div>
+	            <div style="width:120px;">
+	                <div class="input-group">
+	                    <input type="text" id="namesize" class="form-control namesize" placeholder="例如: 14">
+	                    <div class="input-group-addon">px</div>
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <script>
+	        function colorpicker(elm, callback){
+	        	   $(elm).spectrum({
+	        			className : "colorpicker",
+	        			showInput: true,
+	        			showInitial: true,
+	        			showPalette: true,
+	        			maxPaletteSize: 10,
+	        			preferredFormat: "hex",
+	        			change: function(color) {
+	        				if($.isFunction(callback)) {
+	        					callback(color);
+	        				}
+	        			},
+
+	        			palette: [
+	        				["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)", "rgb(153, 153, 153)","rgb(183, 183, 183)",
+
+	        				"rgb(204, 204, 204)", "rgb(217, 217, 217)","rgb(239, 239, 239)", "rgb(243, 243, 243)", "rgb(255, 255, 255)"],
+
+	        				["rgb(152, 0, 0)", "rgb(255, 0, 0)", "rgb(255, 153, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)",
+
+	        				"rgb(0, 255, 255)", "rgb(74, 134, 232)", "rgb(0, 0, 255)", "rgb(153, 0, 255)", "rgb(255, 0, 255)"],
+
+	        				["rgb(230, 184, 175)", "rgb(244, 204, 204)", "rgb(252, 229, 205)", "rgb(255, 242, 204)", "rgb(217, 234, 211)",
+
+	        				"rgb(208, 224, 227)", "rgb(201, 218, 248)", "rgb(207, 226, 243)", "rgb(217, 210, 233)", "rgb(234, 209, 220)",
+
+	        				"rgb(221, 126, 107)", "rgb(234, 153, 153)", "rgb(249, 203, 156)", "rgb(255, 229, 153)", "rgb(182, 215, 168)",
+
+	        				"rgb(162, 196, 201)", "rgb(164, 194, 244)", "rgb(159, 197, 232)", "rgb(180, 167, 214)", "rgb(213, 166, 189)",
+
+	        				"rgb(204, 65, 37)", "rgb(224, 102, 102)", "rgb(246, 178, 107)", "rgb(255, 217, 102)", "rgb(147, 196, 125)",
+
+	        				"rgb(118, 165, 175)", "rgb(109, 158, 235)", "rgb(111, 168, 220)", "rgb(142, 124, 195)", "rgb(194, 123, 160)",
+
+	        				"rgb(166, 28, 0)", "rgb(204, 0, 0)", "rgb(230, 145, 56)", "rgb(241, 194, 50)", "rgb(106, 168, 79)",
+
+	        				"rgb(69, 129, 142)", "rgb(60, 120, 216)", "rgb(61, 133, 198)", "rgb(103, 78, 167)", "rgb(166, 77, 121)",
+
+	        				"rgb(133, 32, 12)", "rgb(153, 0, 0)", "rgb(180, 95, 6)", "rgb(191, 144, 0)", "rgb(56, 118, 29)",
+
+	        				"rgb(19, 79, 92)", "rgb(17, 85, 204)", "rgb(11, 83, 148)", "rgb(53, 28, 117)", "rgb(116, 27, 71)",
+
+	        				"rgb(91, 15, 0)", "rgb(102, 0, 0)", "rgb(120, 63, 4)", "rgb(127, 96, 0)", "rgb(39, 78, 19)",
+
+	        				"rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"]
+	        			]
+	        		});
+	        	}
+
+	        	$(function(){
+	        		$(".colorpicker").each(function(){
+	        			var elm = this;
+	        			colorpicker(elm, function(color){
+	        				$(elm).parent().prev().prev().val(color.toHexString());
+	        				$(elm).parent().prev().css("background-color", color.toHexString());
+	        			});
+	        		});
+	        		
+	        		$(".colorclean").click(function(){
+	        			$(this).parent().prev().prev().val("");
+	        			$(this).parent().prev().css("background-color", "#FFF");
+	        		});
+
+	        		$(document).on('click', ".drag", function(){
+		        		var $this = $(this);
+		        		var textObj = $this.children('.text');
+		        		if(textObj){
+			        		var color = textObj.css('color');
+		        			$(".bg-color").css('background-color', color);
+		        		}
+	        		});
+
+	        		var nametimer = 0;
+	        		function clearTimers(){
+	        			clearInterval(nametimer);
+	        		}
+	        		
+	        		function bind(obj){
+	        	        var nameset = $("#nameset");
+	        	         nameset.hide();
+	        	         clearTimers();
+	        	         var type = obj.attr('type');
+	        	         
+	        	         if(type=='nickname' || type=='desc'){
+	        	              nameset.show();
+	        	              var color = obj.attr('color') || "#000";
+	        	              var size = obj.attr('size') || "16";
+	        	              var input = nameset.find('input:first');
+	        	              var namesize = nameset.find('#namesize');
+	        	              var picker = nameset.find('.sp-preview-inner');
+	        	              input.val(color); namesize.val(size.replace("px",""));  
+	        	              picker.css( {'background-color':color,'font-size':size});
+	        	                  
+	        	              nametimer = setInterval(function(){
+	        	                   obj.attr('color',input.val()).find('.text').css('color',input.val());
+	        	                   obj.attr('size',namesize.val() +"px").find('.text').css('font-size',namesize.val() +"px");
+	        	              },10);
+	        	               
+	        	         }
+	        	    }
+
+	        		$(document).on('click', ".drag", function(){
+	        	         bind($(this));
+	        	    });
+	        	});
+	        </script>
+	    </div>
+	   
+	    <div class="poster-sb">
+	        <button class="btn btn-success" type="button" ng-click="submitUpload()">提交保存</button>
+	    </div>
+	</div>
+  </div>
+  
+
+</div>

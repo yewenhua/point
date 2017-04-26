@@ -1,0 +1,390 @@
+/*!
+ * Stylesheet for the Date Range Picker, for use with Bootstrap 3.x
+ *
+ * Copyright 2013 Dan Grossman ( http://www.dangrossman.info )
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Built for http://www.improvely.com
+ */
+
+.daterangepicker.dropdown-menu {
+	max-width: none;
+	z-index: 3000;
+	font-size: 12px;
+	width: 564px;/*610px*/
+	padding:0px;
+	border-radius: 0px;
+	border-color: #cfdadd;
+}
+.daterangepicker.opensleft .ranges,
+.daterangepicker.opensleft .calendar {
+	float: left;
+	margin: 4px;
+}
+.daterangepicker.opensright .ranges,
+.daterangepicker.opensright .calendar,
+.daterangepicker.openscenter .ranges,
+.daterangepicker.openscenter .calendar {
+	float: right;
+}
+.daterangepicker.single .ranges,
+.daterangepicker.single .calendar {
+	float: none;
+}
+.daterangepicker .ranges {
+	width: 160px;
+	text-align: left;
+}
+.daterangepicker .ranges .range_inputs>div {
+	float: left;
+}
+.daterangepicker .ranges .range_inputs>div:nth-child(2) {
+	padding-left: 11px;
+}
+.daterangepicker .calendar {
+	display: none;
+}
+.daterangepicker.show-calendar .calendar {
+	display: block;
+}
+.daterangepicker .calendar.single .calendar-date {
+	border: none;
+}
+.daterangepicker .calendar th,
+.daterangepicker .calendar td {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	white-space: nowrap;
+	text-align: center;
+	min-width: 32px;
+}
+.daterangepicker .daterangepicker_start_input label,
+.daterangepicker .daterangepicker_end_input label {
+	color: #333;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	height: 20px;
+	line-height: 20px;
+	margin-bottom: 2px;
+	text-shadow: #fff 1px 1px 0px;
+	text-transform: uppercase;
+	width: 74px;
+}
+.daterangepicker .ranges input {
+	font-size: 11px;
+}
+.daterangepicker .ranges .input-mini {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #555;
+	display: block;
+	font-size: 11px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	margin: 0 0 10px 0;
+	padding: 0 6px;
+	width: 74px;
+}
+.daterangepicker .ranges ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.daterangepicker .ranges li {
+	font-size: 13px;
+	background: #f5f5f5;
+	border: 1px solid #f5f5f5;
+	color: #08c;
+	padding: 3px 12px;
+	margin-bottom: 8px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.daterangepicker .ranges li.active,
+.daterangepicker .ranges li:hover {
+	background: #08c;
+	border: 1px solid #08c;
+	color: #fff;
+}
+.daterangepicker .calendar-date {} .daterangepicker .calendar-time {
+	text-align: center;
+	margin: 8px auto 0 auto;
+	line-height: 30px;
+}
+.daterangepicker {
+	position: absolute;
+	background: #fff;
+	top: 100px;
+	left: 20px;
+	padding: 4px;
+	margin-top: 1px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.daterangepicker table {
+	width: 256px;
+	margin: 0;
+}
+.daterangepicker td,
+.daterangepicker th {
+	text-align: center;
+	width: 20px;
+	height: 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.daterangepicker td.off {
+	color: #999;
+}
+.daterangepicker td.disabled,
+.daterangepicker option.disabled {
+	color: #999;
+}
+.daterangepicker td.available:hover,
+.daterangepicker th.available:hover {
+	background: #eee;
+}
+.daterangepicker td.in-range {
+	background: #E9F5F9;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.daterangepicker td.start-date {
+	-webkit-border-radius: 4px 0 0 4px;
+	-moz-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;
+}
+.daterangepicker td.end-date {
+	-webkit-border-radius: 0 4px 4px 0;
+	-moz-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0;
+}
+.daterangepicker td.start-date.end-date {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+	background-color: #16AAD8;
+	border-color: #16AAD8;
+	color: #fff;
+}
+.daterangepicker td.week,
+.daterangepicker th.week {
+	font-size: 80%;
+	color: #ccc;
+}
+.daterangepicker select.monthselect,
+.daterangepicker select.yearselect {
+	font-size: 12px;
+	padding: 1px;
+	height: auto;
+	margin: 0;
+	cursor: default;
+}
+.daterangepicker select.monthselect {
+	margin-right: 2%;
+	width: 56%;
+}
+.daterangepicker select.yearselect {
+	width: 40%;
+}
+.daterangepicker select.hourselect,
+.daterangepicker select.minuteselect,
+.daterangepicker select.secondselect,
+.daterangepicker select.ampmselect {
+	width: 50px;
+	margin-bottom: 0;
+}
+.daterangepicker_start_input {
+	float: left;
+}
+.daterangepicker_end_input {
+	float: left;
+	padding-left: 11px
+}
+.daterangepicker th.month {
+	width: auto;
+}
+.clear {
+	clear: both;
+}
+.daterangepicker .calendar th,
+.daterangepicker .calendar td {
+	min-width: 20px;
+	font-size: 12px;
+}
+.table-condensed > tbody > tr > td {
+	padding: 4px;
+}
+.daterangepicker td.start-date.end-date {
+	border-radius: 2px;
+}
+.daterangepicker td,
+.daterangepicker th {
+	border-radius: 2px;
+}
+.range_head {
+	background: none repeat scroll 0% 0% #4DC4EC;
+	color: #fff;
+	margin-bottom: 10px;
+}
+.range_tail {
+	background: none repeat scroll 0% 0% #fff;
+	padding: 3px 8px;
+	overflow: hidden;
+	text-align: right;
+	margin-top: 4px;
+}
+.range_tail .ranges {
+	width: 100%;
+	text-align: right;
+}
+.range_head span {
+	float: left;
+	margin: 4px 8px;
+	line-height: 23px;
+	height: 23px;
+	font-size: 12px;
+	font-family: Arial, "Microsoft Yahei";
+}
+span.time-margin-left {
+	margin-left: 20px;
+	margin-right: 2px;
+}
+.time-i-relative {
+	position: relative;
+	top: 1px;
+}
+.daterangepicker.opensright .calendar {
+	float: left;
+}
+.white-bg {
+	background: none repeat scroll 0% 0% #fff;
+	padding: 0px 5px;
+}
+.white-bg input {
+	border: none;
+	height: 20px;
+	width: 80px;
+	text-align: center;
+	font-size: 12px;
+	color: #707687;
+}
+.white-bg font {
+	color: #494949;
+}
+.white-bg i {
+	color: #494949;
+}
+.calendar.left {
+	margin-left: 10px;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	padding: 4px 10px 4px 4px;
+}
+.calendar.right {
+	margin-right: 10px;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	padding: 4px 4px 4px 10px;
+}
+.cursor-pointer {
+	cursor: pointer;
+}
+.range_head_sub {
+	margin-left: 30px!important;
+}
+.range_tail .glyphicon {
+	padding: 0 6px 0 0;
+}
+
+
+
+@media (min-width: 300px) and (max-width: 450px) {
+    .daterangepicker table {
+	   width: 150px;
+	}
+	.daterangepicker.dropdown-menu {
+	   width: 320px;
+	}
+	.range_head span{
+	   margin:4px 8px;
+	}
+	.range_head_sub {
+	   margin-left: 14px!important;
+	}
+	span.time-margin-left {
+	   margin-left: 10px;
+	   margin-right: 2px;
+	   margin-top: 8px;
+	}
+	.dropdown-menu{
+	   padding:0;
+	   border-radius: none;
+	   margin-top: 0;
+	}
+	span.today{
+	   clear:left;
+	}
+	span.white-bg{
+	   width: 245px;
+	   margin-top: 8px;
+	}
+	.calendar.left{
+	   margin-left: 2px;
+	   padding: 2px 3px 2px 2px;
+	}
+	.calendar.right{
+	   margin-right: 2px;
+	   padding: 2px 2px 2px 4px;
+	}
+	.table-condensed > tbody > tr > td ,.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td{
+	   padding: 3px;
+	   font-size:11px;
+	}
+	.daterangepicker .calendar th, .daterangepicker .calendar td{
+	   font-size:11px;
+	}
+	.applyBtn, .cancelBtn{
+	   padding: 4px 8px;
+	   font-size:13px;
+	   min-width:72px;
+	}
+}
+@media (min-width: 572px){
+	.daterangepicker.dropdown-menu {
+	   width: 564px;
+	}
+	.applyBtn, .cancelBtn{
+	   padding: 6px 12px;
+	   font-size:14px;
+	   min-width:90px;
+	}
+}
+.dateranges{
+	padding-left:8px; 
+	display:inline-block; 
+	width:180px; 
+	border:1px solid #cfdadd; 
+	border-radius: 2px;
+	cursor:pointer; 
+	height: 30px;
+	line-height:30px;
+}

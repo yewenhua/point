@@ -1,0 +1,59 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="RepeatcompensationCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	    <h1 class="m-n font-thin h3">复投补偿</h1>
+	</div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+	        <div class="panel-heading font-bold">复投补偿</div>
+	        <div class="panel-body">
+	          <form role="form" class="form-validation">
+	            <div class="form-group">
+		            <label>手机号码</label>
+		            <input type="text" class="form-control" placeholder="请输入手机号码" ng-model="data.mobile" required>
+		        </div>
+		        <div class="form-group">
+		            <label>额度</label>
+		            <input type="text" class="form-control" placeholder="请输入额度" ng-model="data.limit_point" required>
+		        </div>
+	            <div class="form-group">
+		            <label>倍率</label>
+		            <input type="text" class="form-control" placeholder="请输入倍率" ng-model="data.rate" required>
+		        </div>
+		        <div class="form-group">
+		            <label>周期</label>
+		            <input type="text" class="form-control" placeholder="请输入周期" ng-model="data.day" required>
+		        </div>
+		        <div class="form-group">
+		            <label>生效时间（包括当天）</label>
+		            <input singledatepicker ng-model="dateSelectBeginTime" type="1" class="form-control" style="background-color:white;" placeholder="请选择生效时间" readonly="readonly" required/>
+		        </div>
+		        <div class="form-group">
+		            <label>过期时间（包括当天）</label>
+		            <input singledatepicker ng-model="dateSelectEndTime" type="1" class="form-control" style="background-color:white;" placeholder="请选择过期时间" readonly="readonly" required/>
+		        </div>
+		        <div class="form-group">
+		            <label>是否自动转入消费积分</label>
+		            <label class="i-switch i-switch-md bg-info m-r align-left relative" style="top:6px; left:5px;">
+			           <input type="checkbox" ng-model="auto_to_consume"/>
+			           <i></i>
+			        </label>
+		        </div>
+	            <div class="">
+		            <button type="button" class="btn btn-sm btn-primary" ng-click="insertCompensation()">提交</button>
+		        </div>
+	          </form>
+	        </div>
+	      </div>
+	</div>
+  </div>
+  <!-- /column -->
+</div>

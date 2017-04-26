@@ -1,0 +1,227 @@
+a:2:{s:6:"expire";i:1462343590;s:7:"headers";a:0:{}}ENDCI---><!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>backend_login</title>
+		<style>
+		body, ol, ul, h1, h2, h3, h4, h5, h6, p {
+		    margin: 0;
+		    padding: 0;
+		}
+		.banner {
+		    height: 410px;
+		    position: relative;
+		}
+		.banner .wrap {
+		    position: relative;
+		    z-index: 2;
+		}
+		
+		.wrap {
+		    width: 1025px;
+		    margin: 0 auto;
+		    overflow: hidden;
+		    zoom: 1;
+		}
+		.banner .login {
+		    float: right;
+		    width: 314px;
+		    margin-top: 20px;
+		    padding: 15px 15px 20px;
+		    background: rgba(255,255,255,0.8);
+		    position: static;
+		    border: 1px solid #fff;
+		    box-shadow: 0 0 1px 1px #cecece;
+		    -webkit-box-shadow: 0 0 1px 1px #cecece;
+		    -moz-box-shadow: 0 0 1px 1px #cecece;
+		}
+		.banner .login h2 {
+		    margin: 0;
+		    padding: 0;
+		    margin-bottom: 5px;
+		    font-size: 20px;
+		    font-weight: 400;
+		}
+		.hide {
+		    display: none;
+		}
+		.banner .login .tips-error {
+		    line-height: 24px;
+		    font-size: 13px;
+		}
+		.banner .login-form .login-mainly {
+		    margin-top: 10px;
+		    margin-bottom: 10px;
+		}
+		.banner .login-form .login-account, .banner .login-form .login-password {
+		    height: 42px;
+		    line-height: 42px;
+		    padding: 3px 0;
+		    background: #fff;
+		    border-left: 1px solid #cecece;
+		    border-top: 1px solid #cecece;
+		    position: relative;
+		    padding-left: 54px;
+		}
+		.login-form label, .cbx, .guide-main-li-ico, .warn, .ico-new, .ico-right {
+		    background: url(/media/img/base.png?v=20160112) no-repeat;
+		}
+		.banner .login-form label {
+		    width: 20px;
+		    height: 20px;
+		    overflow: hidden;
+		    text-indent: -999px;
+		    position: absolute;
+		    left: 20px;
+		    top: 30%;
+		}
+		.banner .login-form .ico-account {
+		    background-position: 0 3px;
+		}
+		.banner .login-form input {
+		    width: 100%;
+		    padding: 11px 0;
+		    border: 0;
+		    box-shadow: 0;
+		    outline: 0;
+		    /*vertical-align: middle;*/
+		    font-family: "Microsoft YaHei";
+		    font-size: 14px;
+		}
+		.banner .login-form .login-password {
+		    margin-top: 10px;
+		}
+		.banner .login-password-on .login-password {
+		    box-shadow: 0 0 5px #aedcfa;
+		    -moz-box-shadow: 0 0 5px #aedcfa;
+		    -webkit-box-shadow: 0 0 5px #aedcfa;
+		}
+		.banner .login-form .ico-password {
+		    background-position: 0 -24px;
+		}
+		.banner .login-memory {
+		    margin-bottom: 20px;
+		    overflow: hidden;
+		    zoom: 1;
+		}
+		.banner .login-memory .memory-account {
+		    float: left;
+		}
+		.cbx {
+		    width: 16px;
+		    height: 16px;
+		    display: inline-block;
+		    margin: -3px 6px 0 0;
+		    vertical-align: middle;
+		    cursor: pointer;
+		    overflow: hidden;
+		}
+		.cbx {
+		    background-position: 0 -54px;
+		}
+		.cbx-on {
+		    background-position: 0 -80px;
+		    display: inline-block;
+		}
+		.banner .login-memory .forget-password {
+		    float: right;
+		}
+		.banner .login a {
+		    color: #333;
+		    text-decoration: none;
+		}
+		.banner .login .btn-login {
+		    display: inline-block;
+		    width: 100%;
+		    height: 45px;
+		    line-height: 45px;
+		    background-color: #00c800;
+		    color: #fff;
+		    border: 1px solid #44b549;
+		    text-align: center;
+		    font-size: 20px;
+		    text-decoration: none;
+		}
+		.cms-banner {
+		    position: absolute;
+		    top: 0;
+		    width: 100%;
+		    height: 410px;
+		    overflow: hidden;
+		}
+		.cms-banner ul li {
+		    position: absolute;
+		    top: 0;
+		    width: 100%;
+		    height: 410px;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		}
+		.banner .login .btn-login:hover{text-decoration:none;background:#2F9833;color:#fff;}
+		.banner .login-account-on .login-account{box-shadow:0 0 5px #aedcfa;-moz-box-shadow:0 0 5px #aedcfa;-webkit-box-shadow:0 0 5px #aedcfa;}
+		.banner .login-password-on .login-password{box-shadow:0 0 5px #aedcfa;-moz-box-shadow:0 0 5px #aedcfa;-webkit-box-shadow:0 0 5px #aedcfa;}
+		.banner .login-password-on .login-account{border-bottom:none;}
+		</style>
+		<script src="/media/js/lib/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="banner">
+		    <div class="wrap">
+		         <div class="login">
+		        	<div class="login-in">
+		                <h2><span class="hide">微信支付</span>商户登录</h2>
+		                <div class="tips-error"><i class="ico-error"></i><p id="errmsg" style="color:red"></p></div>
+						
+		                <form class="login-form" action="/index.php/home/d_login" method="post">
+		                    <div class="login-mainly">
+		                        <div class="login-account">
+		                           <label class="ico-account" for="">登录帐号</label>
+		                           <input type="text" name="username" placeholder="登录帐号" id="idUserName">
+		                        </div>
+		                        <div class="login-password" id="mmpayPwdEdit">
+		                           <label class="ico-password" for="">登录密码</label>
+		                           <input type="password" name="password" placeholder="登录密码" id="idPassword">
+		                        </div>
+		                    </div>
+		                </form>
+		                <div class="login-memory">
+		                    <label id="memory_username_label" class="memory-account" for=""><i class="cbx" id="memory_username"></i>记住帐号</label>
+		                    <a class="forget-password" href="/index.php/reset_pass">忘记密码？</a>
+		                </div>
+		                <a class="btn-login" href="javascript:void(0);" id="do_login">登录</a>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="cms-banner cms-area" id="cmspic_1000" home="true"><ul><li style="background-image:url(/media/img/bannerwx.jpg);"></li></ul></div>
+		</div>
+	</body>
+	
+	<script>
+	    $(function(){
+		    $("#memory_username_label").click(function(){
+			    if($("#memory_username").hasClass('cbx-on')){
+			    	$("#memory_username").removeClass('cbx-on');
+				}
+			    else{
+			    	$("#memory_username").addClass('cbx-on');
+			    }
+			});
+
+		    $("#idUserName").focus(function(){
+		    	$('.login-form').addClass('login-account-on');
+			});
+
+		    $("#idUserName").blur(function(){
+		    	$('.login-form').removeClass('login-account-on');
+			});
+
+		    $("#idPassword").focus(function(){
+		    	$('.login-form').addClass('login-password-on');
+			});
+
+		    $("#idPassword").blur(function(){
+		    	$('.login-form').removeClass('login-password-on');
+			});
+		});
+	</script>
+</html>

@@ -1,0 +1,140 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="DeclarationsettingCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	    <h1 class="m-n font-thin h3">报单设置</h1>
+	</div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+	        <div class="panel-heading font-bold">报单设置</div>
+	        <div class="panel-body relative">
+	          <div class="yp-mask-content" ng-show="loading">
+				    <div class="yp-mask"></div>
+				    <div class="yp-mask-loading">
+				      <div class="spinner spinner-sm"> 
+				         <div class="rect1"></div> 
+				         <div class="rect2"></div> 
+				         <div class="rect3"></div> 
+				         <div class="rect4"></div> 
+				         <div class="rect5"></div> 
+				      </div>
+				    </div>
+			  </div>
+	          <form role="form" class="form-validation">
+	            <div class="col-lg-6">
+		            <div class="form-group">
+			            <label>报单最低金额</label>
+			            <input type="text" class="form-control" placeholder="请输入报单最低金额" ng-model="config.least_money" required>
+			        </div>
+			        <div class="form-group">
+			            <label>报单最高金额</label>
+			            <input type="text" class="form-control" placeholder="请输入报单最高金额" ng-model="config.most_money" required>
+			        </div>
+			        <div class="form-group">
+			            <label>报单兑冲消费积分最高比例（单位：百分比%）</label>
+			            <input type="text" class="form-control" placeholder="请输入报单兑冲消费积分最高比例" ng-model="config.use_consume_most_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>待用积分倍率</label>
+			            <input type="text" class="form-control" placeholder="请输入待用积分倍率" ng-model="config.wait_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>第一层分享比例（单位：百分比%）</label>
+			            <input type="text" class="form-control" placeholder="请输入第一层分享比例" ng-model="config.first_level_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>第二层分享比例（单位：百分比%）</label>
+			            <input type="text" class="form-control" placeholder="请输入第二层分享比例" ng-model="config.second_level_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>第三层分享比例（单位：百分比%）</label>
+			            <input type="text" class="form-control" placeholder="请输入第三层分享比例" ng-model="config.third_level_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>充值复投倍率（使用'/'符号分割）</label>
+			            <input type="text" class="form-control" placeholder="请输入充值复投倍率" ng-model="config.charge_repeat_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>商家结算复投倍率（使用'/'符号分割）</label>
+			            <input type="text" class="form-control" placeholder="请输入商家复投倍率" ng-model="config.merchant_repeat_rate" required>
+			        </div>
+		        </div>
+		        <div class="col-lg-6">
+		            <div class="form-group">
+			            <label>赠送兑换积分比例（单位：百分比%）</label>
+			            <input type="text" class="form-control" placeholder="请输入赠送兑换积分比例" ng-model="config.give_exchange_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>赠送消费积分比例（单位：百分比%）</label>
+			            <input type="text" class="form-control" placeholder="请输入赠送消费积分比例" ng-model="config.give_consume_rate" required>
+			        </div>
+			        <div class="form-group">
+			            <label>赠送分享积分比例（单位：百分比%）</label>
+			            <input type="text" class="form-control" placeholder="请输入赠送分享积分比例" ng-model="config.give_share_rate" required>
+			        </div>
+			        <div class="form-group relative">
+			            <label>待用积分周期（单位：天）</label>
+			            <input type="text" class="form-control" placeholder="请输入待用积分周期" ng-model="config.wait_period" required>
+			            <span class="unit-day-config">天</span>
+			        </div>
+			        <div class="form-group">
+			            <label>一层分享级别要求</label>
+			            <select class="form-control" ng-model="config.first_level_must">
+	                        <option value="0">普通会员</option>
+	                        <option value="1">VIP</option>
+	                        <option value="2">VIP1</option>
+	                        <option value="11">初级服务中心</option>
+	                        <option value="12">中级服务中心</option>
+	                        <option value="13">高级服务中心</option>
+	                    </select>
+			        </div>
+			        <div class="form-group">
+			            <label>二层分享级别要求</label>
+			            <select class="form-control" ng-model="config.second_level_must">
+	                        <option value="0">普通会员</option>
+	                        <option value="1">VIP</option>
+	                        <option value="2">VIP1</option>
+	                        <option value="11">初级服务中心</option>
+	                        <option value="12">中级服务中心</option>
+	                        <option value="13">高级服务中心</option>
+	                    </select>
+			        </div>
+			        <div class="form-group">
+			            <label>三层分享级别要求</label>
+			            <select class="form-control" ng-model="config.third_level_must">
+	                        <option value="0">普通会员</option>
+	                        <option value="1">VIP</option>
+	                        <option value="2">VIP1</option>
+	                        <option value="11">初级服务中心</option>
+	                        <option value="12">中级服务中心</option>
+	                        <option value="13">高级服务中心</option>
+	                    </select>
+			        </div>
+			        <div class="form-group relative">
+			            <label>充值复投周期（使用'/'符号分割，单位：天）</label>
+			            <input type="text" class="form-control" placeholder="请输入充值复投周期" ng-model="config.charge_repeat_period" required>
+			        </div>
+			        <div class="form-group relative">
+			            <label>商家结算复投周期（使用'/'符号分割，单位：天）</label>
+			            <input type="text" class="form-control" placeholder="请输入商家复投周期" ng-model="config.merchant_repeat_period" required>
+			        </div>
+		        </div>
+		        <div class="col-lg-12">
+		            <div class="">
+			            <button type="button" class="btn btn-sm w-xs btn-primary" ng-disabled="submit" ng-click="submitConfig()">{{submit_html}}</button>
+			        </div>
+			    </div>
+	          </form>
+	        </div>
+	    </div>
+	</div>
+  </div>
+  <!-- /column -->
+</div>

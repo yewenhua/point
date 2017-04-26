@@ -1,0 +1,83 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="LogCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	  <h1 class="m-n font-thin h3">日志管理</h1>
+	</div>
+    <div class="wrapper-md" ng-show="!creating && !editing">
+      <div class="input-group align-right">
+           <span class="input-group-addon input-sm" ng-click="searchData()"><i class="fa fa-search"></i></span>
+           <input type="text" class="form-control input-sm ng-pristine ng-valid ng-touched input-search-width" placeholder="按名字或内容搜索" ng-model="query" ng-enter="searchData()">
+           <span class="pull-left margin-left-fifteen"><input singledatepicker ng-model="dateSelectSingle" type="text" class="timeinput" style="height:30px;" placeholder="请选择按时间搜索" readonly="readonly" /></span>
+        </div>
+        <br/>
+        <div class="panel panel-default relative">
+            <div class="yp-mask-content" ng-show="loading">
+			   <div class="yp-mask"></div>
+			   <div class="yp-mask-loading">
+			      <div class="spinner spinner-sm"> 
+			         <div class="rect1"></div> 
+			         <div class="rect2"></div> 
+			         <div class="rect3"></div> 
+			         <div class="rect4"></div> 
+			         <div class="rect5"></div> 
+			      </div>
+			   </div>
+			</div>
+		    <div class="panel-heading">日志管理记录</div>
+		    <div>
+	           <table class="table m-b-none align-center">
+			      <thead>
+			          <tr>
+			              <th>序号</th>
+			              <th>操作人</th>
+			              <th>操作内容</th>
+			              <th>操作IP</th>
+			              <th>操作时间</th>
+			          </tr>
+			       </thead>
+			       <tbody class="article_table">
+			          <tr ng-repeat="item in catchList | orderBy:'created_at':true">
+			              <td ng-cloak>{{(page-1)*10 + $index + 1}}</td>
+			              <td ng-cloak>{{item.operater_name ? item.operater_name : '--'}}</td>
+			              <td ng-cloak>{{item.operater_desc ? item.operater_desc : '--'}}</td>
+			              <td ng-cloak>{{item.operater_ip ? item.operater_ip : '--'}}</td>
+			              <td ng-cloak>{{item.created_at}}</td>
+			          </tr>
+			          <tr ng-if="!haveData">
+			              <td colspan="5" class="text-center">没有数据！</td>
+			          </tr>
+			       </tbody>
+			       <tfoot class="hide-if-no-paging" ng-show="haveData">
+			          <tr>
+			              <td colspan="5" class="text-center">
+			                  <div class="page-content" ng-hide="loading">
+					               <ul class="divpage-ul ul-border-left" id="divpage-page">
+						             <li class="divpage" ng-click="getInfoPage(1)" ng-class="{true:'disable'}[isFirst(page)]">首页</li>
+						             <li class="divpage" ng-click="getInfoPage(page-1)" ng-class="{true:'disable'}[isFirst(page)]">上一页</li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="getInfoPage(page + 1)" ng-class="{'disable':isDisable(page)}">下一页</li>
+						             <li class="divpage" ng-click="getInfoPage(totalPage)" ng-class="{'disable':isDisable(page)}">尾页</li>
+						          </ul>
+					           </div>
+			              </td>
+			          </tr>
+			       </tfoot>
+		      </table>
+		   </div>
+	  </div>
+	</div>
+  </div>
+  <!-- /column -->
+</div>

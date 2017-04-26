@@ -1,0 +1,108 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="UpgradeCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	    <h1 class="m-n font-thin h3">升级记录</h1>
+	</div>
+    <div class="wrapper-md">
+        <div class="input-group weekcheck-search-area relative">
+           <span class="input-group-addon input-sm" ng-click="searchData()"><i class="fa fa-search"></i></span>
+           <input type="text" class="form-control input-sm ng-pristine ng-valid ng-touched input-search-width" placeholder="按姓名或手机号码或订单号搜索" ng-model="query" ng-enter="searchData()">
+           <input singledatepicker ng-model="dateSelectSingle" type="text" class="timeinput" style="margin-left:10px; height:30px; width:150px;" placeholder="选择时间搜索" readonly="readonly" />
+        </div>
+        <br/>
+        <div class="panel panel-default relative">
+            <div class="yp-mask-content" ng-show="loading">
+			   <div class="yp-mask"></div>
+			   <div class="yp-mask-loading">
+			      <div class="spinner spinner-sm"> 
+			         <div class="rect1"></div> 
+			         <div class="rect2"></div> 
+			         <div class="rect3"></div> 
+			         <div class="rect4"></div> 
+			         <div class="rect5"></div> 
+			      </div>
+			   </div>
+			</div>
+		    <div class="panel-heading">
+		       <span>升级记录</span>
+		    </div>
+		    <div>
+	           <table class="table m-b-none align-center yearplan">
+			       <thead>
+			          <tr>
+			              <th class="select-all" ng-show="isOperate('app.userlist')">
+			                  <label class="i-checks">
+				                <input type="checkbox" ng-model="selectAll">
+				                <i></i>
+				              </label>
+			              </th>
+			              <th>序号</th>
+			              <th>姓名</th>
+			              <th>手机</th>
+			              <th><span class="article-hundred-max-width">订单号</span></th>
+			              <th>旧等级</th>
+			              <th>新等级</th>
+			              <th>升级时间</th>
+			          </tr>
+			       </thead>
+			       <tbody class="article_table">
+			          <tr ng-repeat="item in dataList">
+			              <td  class="select-item" ng-show="isOperate('app.userlist')">
+			                  <label class="i-checks">
+				                <input type="checkbox" ng-model="item.selected">
+				                <i></i>
+				              </label>
+			              </td>
+			              <td ng-cloak>{{(page - 1) * perPage + $index + 1}}</td>
+			              <td ng-cloak>{{item.name ? item.name : '--'}}</td>
+			              <td ng-cloak>{{item.mobile ? item.mobile : '--'}}</td>
+			              <td ng-cloak><span class="article-hundred-max-width">{{item.order_id ? item.order_id : '--'}}</span></td>
+			              <td ng-cloak>{{item.old_level == 0 ? '普通会员' : item.old_level == 1 ? 'VIP' : item.old_level == 2 ? 'VIP1' : item.old_level == 11 ? '初级服务中心' : item.old_level == 12 ? '中级服务中心' : item.old_level == 13 ? '高级服务中心' : '--'}}</td>
+			              <td ng-cloak>{{item.new_level == 0 ? '普通会员' : item.new_level == 1 ? 'VIP' : item.new_level == 2 ? 'VIP1' : item.new_level == 11 ? '初级服务中心' : item.new_level == 12 ? '中级服务中心' : item.new_level == 13 ? '高级服务中心' : '--'}}</td>
+			              <td ng-cloak>{{item.created_at ? item.created_at.substring(0, 16) : '--'}}</td>
+			          </tr>
+			          <tr ng-if="!haveData">
+			              <td colspan="8" class="text-center">没有数据！</td>
+			          </tr>
+			       </tbody>
+			       <tfoot class="hide-if-no-paging" ng-show="haveData">
+			          <tr>
+			              <td colspan="1" class="relative">
+			                  <div class="yearlan-status" ng-show="!loading">
+				                  <button ng-if="dataList.length > 1" class="btn btn-sm btn-danger" ng-disabled="all_delete_disabled" ng-click="deleteBatch()"><i class="fa fa-fw m-r-xs fa-trash-o"></i>{{all_delete_html}}</button>
+			                  </div>
+			              </td>
+			              <td colspan="7" class="text-center">
+			                  <div class="page-content" ng-hide="loading">
+					               <ul class="divpage-ul ul-border-left" id="divpage-page">
+						             <li class="divpage" ng-click="getInfoPage(1)" ng-class="{true:'disable'}[isFirst(page)]">首页</li>
+						             <li class="divpage" ng-click="getInfoPage(page-1)" ng-class="{true:'disable'}[isFirst(page)]">上一页</li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="getInfoPage(page + 1)" ng-class="{'disable':isDisable(page)}">下一页</li>
+						             <li class="divpage" ng-click="getInfoPage(totalPage)" ng-class="{'disable':isDisable(page)}">尾页</li>
+						          </ul>
+					           </div>
+			              </td>
+			          </tr>
+			       </tfoot>
+		      </table>
+		   </div>
+	  </div>
+
+	  
+	</div>
+  </div>
+  <!-- /column -->
+</div>

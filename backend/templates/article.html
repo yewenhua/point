@@ -1,0 +1,123 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="ArticleCtrl">
+  <div class="col">
+    <div class="wrapper-md" ng-show="!editing">
+        <div class="input-group">
+           <span class="input-group-addon input-sm" ng-click="searchData()"><i class="fa fa-search"></i></span>
+           <input type="text" class="form-control input-sm ng-pristine ng-valid ng-touched input-search-width" placeholder="按标题或摘要搜索" ng-model="query" ng-enter="searchData()">
+           <input daterange="daterange" type="text" class="m-l widthdirective dateranges timeinputrange" ng-model="dateSelectRange" min-date="2016-01-01" placeholder="按时间段搜索" id="dateranges"/>
+           <a href="" class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="createArticle()" ng-if="isOperate('app.article')"><i class="fa fa-fw m-r-xs fa-plus"></i>新建</a>
+        </div>
+        <br/>
+        <div class="panel panel-default relative">
+            <div class="yp-mask-content" ng-show="loading">
+			   <div class="yp-mask"></div>
+			   <div class="yp-mask-loading">
+			      <div class="spinner spinner-sm"> 
+			         <div class="rect1"></div> 
+			         <div class="rect2"></div> 
+			         <div class="rect3"></div> 
+			         <div class="rect4"></div> 
+			         <div class="rect5"></div> 
+			      </div>
+			   </div>
+			</div>
+		    <div class="panel-heading">文章列表</div>
+		    <div>
+	           <table class="table m-b-none align-center">
+			      <thead>
+			          <tr>
+			              <th class="select-all" ng-show="isOperate('app.article')">
+			                  <label class="i-checks">
+				                <input type="checkbox" ng-model="selectAll">
+				                <i></i>
+				              </label>
+			              </th>
+			              <th data-toggle="true">序号</th>
+			              <th data-sort-ignore="true"><span class="article-two-hundred-max-width">标题</span></th>
+			              <th data-sort-ignore="true"><span class="article-two-hundred-max-width">摘要</span></th>
+			              <th data-sort-ignore="true">创建时间</th>
+			              <th data-sort-ignore="true">操作</th>
+			          </tr>
+			       </thead>
+			       <tbody class="article_table">
+			          <tr ng-repeat="item in dataList">
+			              <td  class="select-item" ng-show="isOperate('app.article')">
+			                  <label class="i-checks">
+				                <input type="checkbox" ng-model="item.selected">
+				                <i></i>
+				              </label>
+			              </td>
+			              <td ng-cloak>{{(page-1)*10 + $index + 1}}</td>
+			              <td ng-cloak title="{{item.title}}"><span class="article-two-hundred-max-width">{{item.title}}</span></td>
+			              <td ng-cloak title="{{item.abstracts}}"><span class="article-two-hundred-max-width">{{item.abstracts ? item.abstracts : '--'}}</span></td>
+			              <td ng-cloak>{{item.created_at}}</td>
+			              <td>
+			                 <button class="btn btn-primary btn-smest" ng-click="updateArticle($index)"><i class="fa fa-fw m-r-xs fa-pencil"></i>修改</button>
+			              </td>
+			          </tr>
+			          <tr ng-if="!haveData">
+			              <td colspan="6" class="text-center">没有数据！</td>
+			          </tr>
+			       </tbody>
+			       <tfoot class="hide-if-no-paging" ng-show="haveData">
+			          <tr>
+			              <td colspan="2" class="relative">
+			                  <div class="yearlan-status" ng-show="!loading">
+				                  <button ng-if="dataList.length > 0" class="btn btn-sm btn-danger" ng-disabled="all_delete_disabled" ng-click="deleteBatch()"><i class="fa fa-fw m-r-xs fa-trash-o"></i>{{all_delete_html}}</button>
+			                      <button ng-if="dataList.length > 1" class="btn btn-sm btn-primary" ng-disabled="moveable == false" ng-click="up()"><i class="fa fa-fw m-r-xs fa-arrow-up"></i>上移</button>
+				                  <button ng-if="dataList.length > 1" class="btn btn-sm btn-primary" ng-disabled="moveable == false" ng-click="down()"><i class="fa fa-fw m-r-xs fa-arrow-down"></i>下移</button>
+				                  <button ng-if="dataList.length > 1" class="btn btn-sm btn-info" ng-disabled="moveable == false" ng-click="top()"><i class="fa fa-fw m-r-xs fa-arrow-up"></i>置顶</button>
+			                  </div>
+			              </td>
+			              <td colspan="4" class="text-center">
+			                  <div class="page-content" ng-hide="loading">
+					               <ul class="divpage-ul ul-border-left" id="article-page">
+						             <li class="divpage" ng-click="getInfoPage(1)" ng-class="{true:'disable'}[isFirst(page)]">首页</li>
+						             <li class="divpage" ng-click="getInfoPage(page-1)" ng-class="{true:'disable'}[isFirst(page)]">上一页</li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="getInfoPage(page + 1)" ng-class="{'disable':isDisable(page)}">下一页</li>
+						             <li class="divpage" ng-click="getInfoPage(totalPage)" ng-class="{'disable':isDisable(page)}">尾页</li>
+						          </ul>
+					           </div>
+			              </td>
+			          </tr>
+			       </tfoot>
+		      </table>
+		   </div>
+	   </div>
+    </div>
+    <div class="wrapper-md" ng-show="editing">
+       <!-- fields -->
+       <form role="form" class="ng-pristine ng-valid">
+	        <div class="form-group">
+	             <label>文章标题</label>
+	             <input type="text" class="form-control" placeholder="请输入文章标题" ng-model="article.title">
+	        </div>
+	        <label>文章内容</label>
+			<div class="ueditor" ng-model="article.content" style="width:100%; min-height:350px;"></div><br/>
+			<div class="form-group">
+	             <label>文章摘要</label>
+	             <textarea class="form-control" rows="6" placeholder="请输入文章摘要" ng-model="article.abstracts"></textarea>
+	        </div>
+	        <div class="relative">
+		        <div class="multiple-file-select relative b-a article-promote-input">
+		           <span class="glyphicon glyphicon-folder-open"></span>
+			       <p class="file-type-name">选择封面图片</p>
+			       <input class="file-select-no-visibile" type="file" nv-file-select="" uploader="uploader" id="fileInput"/>
+		        </div>
+		        <div class="b-a bg-white article-promote-img">
+		           <div class="bg-light relative article-promote-img-border">
+		               <img ng-src="{{data.bgImage}}" id="preview"/>
+		           </div>
+		        </div>
+	        </div>
+	        <button type="button" class="btn btn-sm btn-primary" ng-disabled="submiting" ng-click="submitArticle()">{{submit_html}}</button>
+	        <button type="button" class="btn btn-sm btn-warning" ng-click="cancelArticle()">返回</button>
+	   </form>
+       <!-- / fields -->
+    </div>
+</div>

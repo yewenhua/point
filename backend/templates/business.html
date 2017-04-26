@@ -1,0 +1,53 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="BusinessCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	    <h1 class="m-n font-thin h3">商家结算</h1>
+	</div>
+    <div class="wrapper-md">
+        <div class="panel panel-default">
+	        <div class="panel-heading font-bold">商家结算</div>
+	        <div class="panel-body">
+	          <form role="form" class="form-validation">
+	            <div class="form-group">
+		            <label>商家编号</label>
+		            <input type="number" class="form-control" placeholder="请输入商家编号" ng-model="quick.mobile" required>
+		        </div>
+		        <div class="form-group">
+		           <label>商家获得积分类型</label>
+				   <select name="account" class="form-control m-b status-where" ng-model="company_get_type">
+		              <option value="2">可用积分</option>
+		              <option value="3">消费积分</option>
+		           </select>
+		        </div>
+		        <div class="form-group">
+		            <div ng-if="company_get_type == 2">
+			            <label>获利可用积分</label>
+			            <input type="number" class="form-control" placeholder="请输入获利可用积分" ng-model="quick.point" required>
+		            </div>
+		            <div ng-if="company_get_type == 3">
+			            <label>获利消费积分</label>
+			            <input type="number" class="form-control" placeholder="请输入获利消费积分" ng-model="quick.point" required>
+		            </div>
+		        </div>
+		        <div class="form-group">
+		            <label>备注</label>
+		            <input type="text" class="form-control" placeholder="请输入备注" ng-model="quick.mark" required>
+		        </div>
+	            <div class="">
+		            <button type="button" class="btn btn-sm btn-primary" ng-disabled="submit" ng-click="quick()">{{submit_html}}</button>
+		        </div>
+	          </form>
+	        </div>
+	      </div>
+	</div>
+  </div>
+  <!-- /column -->
+</div>

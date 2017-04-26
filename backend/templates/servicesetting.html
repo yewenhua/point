@@ -1,0 +1,94 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="ServicesettingCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <span>
+	        <h1 class="m-n font-thin h3 inline-block">服务中心设置</h1>
+	    </span>
+	    <span>
+            <span class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="add()" ng-if="isOperate('app.servicesetting')"><i class="fa fa-fw m-r-xs fa-plus"></i>新增</span>
+        </span>
+	</div>
+    <div class="wrapper-md">
+        <div class="panel panel-default relative">
+            <div class="yp-mask-content" ng-show="loading">
+			   <div class="yp-mask"></div>
+			   <div class="yp-mask-loading">
+			      <div class="spinner spinner-sm"> 
+			         <div class="rect1"></div> 
+			         <div class="rect2"></div> 
+			         <div class="rect3"></div> 
+			         <div class="rect4"></div> 
+			         <div class="rect5"></div> 
+			      </div>
+			   </div>
+			</div>
+		    <div class="panel-heading">
+		       <span>服务中心设置列表</span>
+		    </div>
+		    <div>
+	           <table class="table m-b-none align-center yearplan">
+			       <thead>
+			          <tr>
+			              <th>序号</th>
+			              <th>等级名称</th>
+			              <th>现金</th>
+			              <th>购物券</th>
+			              <th>消费积分</th>
+			              <th>分享积分</th>
+			              <th>佣金</th>
+			              <th>操作</th>
+			          </tr>
+			       </thead>
+			       <tbody class="article_table">
+			          <tr ng-repeat="item in dataList">
+			              <td ng-cloak>{{(page - 1) * perPage + $index + 1}}</td>
+			              <td ng-cloak>{{item.setting_name ? item.setting_name : '--'}}</td>
+			              <td ng-cloak>{{item.label_name_list ? item.label_name_list : '--'}}</td>
+			              <td ng-cloak>{{item.file_size | sizeFilter}}</td>
+			              <td ng-cloak>{{item.download_num ? item.download_num : '--'}}</td>
+			              <td ng-cloak class="{{reviewClass(item.status)}}">{{item.status == 0 ? '待审核' : item.status == 1 ? '已通过' : item.status == 2 ? '不通过' : item.status == 3 ? '锁定' : '--'}}</td>
+			              <td ng-cloak>{{item.time ? item.time.substring(0, 16) : '--'}}</td>
+			              <td>
+			                 <button class="btn btn-sm btn-primary btn-smest" ng-click="update(item, 'lg')"><i class="fa fa-fw m-r-xs fa-pencil"></i>修改</button>
+			              </td>
+			          </tr>
+			          <tr ng-if="!haveData">
+			              <td colspan="8" class="text-center">没有数据！</td>
+			          </tr>
+			       </tbody>
+			       <tfoot class="hide-if-no-paging" ng-show="haveData">
+			          <tr>
+			              <td colspan="8" class="text-center">
+			                  <div class="page-content" ng-hide="loading">
+					               <ul class="divpage-ul ul-border-left" id="divpage-page">
+						             <li class="divpage" ng-click="getInfoPage(1)" ng-class="{true:'disable'}[isFirst(page)]">首页</li>
+						             <li class="divpage" ng-click="getInfoPage(page-1)" ng-class="{true:'disable'}[isFirst(page)]">上一页</li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="divpageByPage($event)"></li>
+						             <li class="divpage" ng-click="getInfoPage(page + 1)" ng-class="{'disable':isDisable(page)}">下一页</li>
+						             <li class="divpage" ng-click="getInfoPage(totalPage)" ng-class="{'disable':isDisable(page)}">尾页</li>
+						          </ul>
+					           </div>
+			              </td>
+			          </tr>
+			       </tfoot>
+		      </table>
+		   </div>
+	  </div>
+
+	  
+	</div>
+  </div>
+  <!-- /column -->
+</div>

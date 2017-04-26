@@ -1,0 +1,87 @@
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;
+  " ng-controller="SalerankCtrl">
+
+  <!-- column -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+	    <h1 class="m-n font-thin h3">销售统计</h1>
+	</div>
+    <div class="wrapper-md">
+        <div class="statistics-search-area">
+            <select name="account" class="form-control m-b year-where" ng-model="selectedYear" ng-change="changeYear()" ng-options="item.id as item.name for item in yearData"></select>
+		    <select name="account" class="form-control m-b week-where" ng-model="selectedMonth" ng-change="changeMonth()" ng-options="item.id as item.name for item in monthSelectData"></select>
+        </div>
+        <br/>
+        <div class="panel panel-default relative">
+            <div class="yp-mask-content" ng-show="loading">
+			   <div class="yp-mask"></div>
+			   <div class="yp-mask-loading">
+			      <div class="spinner spinner-sm"> 
+			         <div class="rect1"></div> 
+			         <div class="rect2"></div> 
+			         <div class="rect3"></div> 
+			         <div class="rect4"></div> 
+			         <div class="rect5"></div> 
+			      </div>
+			   </div>
+			</div>
+		    <div class="panel-heading">
+		       <span>销售统计</span>
+		    </div>
+		    <div>
+	           <table class="table m-b-none align-center yearplan">
+			       <thead>
+			          <tr>
+			              <th ng-if="selectedMonth == 99">月份</th>
+			              <th ng-if="selectedMonth != 99">日期</th>
+			              <th>订单量</th>
+			              <th>商品数</th>
+			              <th>购物券</th>
+			              <th>消费积分</th>
+			              <th>现金</th>
+			              <th>邮费</th>
+			              <th>结算可用积分</th>
+			              <th>结算消费积分</th>
+			          </tr>
+			       </thead>
+			       <tbody class="article_table">
+			          <tr ng-repeat="value in dataList">
+			              <td ng-cloak>{{value.index}}</td>
+			              <td ng-cloak>{{value.data.order_num ? value.data.order_num : 0}}</td>
+			              <td ng-cloak>{{value.data.goods_num ? value.data.goods_num : 0}}</td>
+			              <td ng-cloak>{{value.data.exchange_point ? value.data.exchange_point : 0}}</td>
+			              <td ng-cloak>{{value.data.consume_point ? value.data.consume_point : 0}}</td>
+			              <td ng-cloak>{{value.data.total_cash ? value.data.total_cash : 0}}</td>
+			              <td ng-cloak>{{value.data.logistic_fee ? value.data.logistic_fee : 0}}</td>
+			              <td ng-cloak>{{value.data.back_useable ? value.data.back_useable : 0}}</td>
+			              <td ng-cloak>{{value.data.back_consume ? value.data.back_consume : 0}}</td>
+			          </tr>
+			          <tr ng-if="haveData">
+			              <td ng-cloak>合计</td>
+			              <td ng-cloak>{{total.total_order_num ? total.total_order_num : 0}}</td>
+			              <td ng-cloak>{{total.total_goods_num ? total.total_goods_num : 0}}</td>
+			              <td ng-cloak>{{total.total_exchange_point ? total.total_exchange_point : 0}}</td>
+			              <td ng-cloak>{{total.total_consume_point ? total.total_consume_point : 0}}</td>
+			              <td ng-cloak>{{total.total_total_cash ? total.total_total_cash : 0}}</td>
+			              <td ng-cloak>{{total.total_logistic_fee ? total.total_logistic_fee : 0}}</td>
+			              <td ng-cloak>{{total.total_back_useable ? total.total_back_useable : 0}}</td>
+			              <td ng-cloak>{{total.total_back_consume ? total.total_back_consume : 0}}</td>
+			          </tr>
+			          <tr ng-if="!haveData">
+			              <td colspan="9" class="text-center">没有数据！</td>
+			          </tr>
+			       </tbody>
+		      </table>
+		   </div>
+	  </div>
+
+	  
+	</div>
+  </div>
+  <!-- /column -->
+</div>

@@ -1,0 +1,106 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+  <!-- main -->
+  <div class="col" ng-controller="WelcomeCtrl">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black font-yahei">数据统计</h1>
+        </div>
+        <div class="col-sm-6 text-right hidden-xs">
+          <div class="inline m-r text-left">
+            <div class="m-b-xs">{{allCash}}(元) <span class="text-muted">总订单现金量</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / main header -->
+    <div class="wrapper-md">
+      <!-- stats -->
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row row-sm text-center">
+            <div class="col-xs-6">
+              <a ng-click="goLink('send')">
+	              <div class="panel padder-v item" style="padding-top:43px; padding-bottom:43px;">
+	                <div class="h1 text-info font-thin h1">{{statusNum ? statusNum.alreadyPay : 0}}</div>
+	                <span class="text-muted text-xs">待发货订单</span>
+	              </div>
+              <a>
+            </div>
+            <div class="col-xs-6">
+              <a ng-click="goLink('sure')" class="block panel padder-v bg-primary item" style="padding-top:43px; padding-bottom:43px;">
+                <span class="text-white font-thin h1 block">{{statusNum ? statusNum.alreadySend : 0}}</span>
+                <span class="text-muted text-xs">待确认订单</span>
+              </a>
+            </div>
+            <div class="col-xs-6 m-b-md">
+              <a ng-click="goLink('complete')">
+	              <div class="r bg-light dker item hbox no-border">
+	                <div class="col dk padder-v r-r bg-info" style="padding-top:43px; padding-bottom:43px;">
+	                  <div class="text-white font-thin h1"><span>{{statusNum ? statusNum.completed : 0}}</span></div>
+	                  <span class="text-muted text-xs">已完成订单</span>
+	                </div>
+	              </div>
+              </a>
+            </div>
+            <div class="col-xs-6 m-b-md">
+              <a ng-click="goLink('refund')">
+	              <div class="r bg-light dker item hbox no-border">
+	                <div class="col dk padder-v r-r bg-warning" style="padding-top:43px; padding-bottom:43px;">
+	                  <div class="text-white font-thin h1"><span>{{statusNum ? statusNum.refund : 0}}</span></div>
+	                  <span class="text-muted text-xs">待退款订单</span>
+	                </div>
+	              </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="panel relative">
+              <div class="yp-mask-content" ng-show="cashLoading">
+			     <div class="yp-mask"></div>
+			     <div class="yp-mask-loading">
+			        <div class="spinner spinner-sm"> 
+			           <div class="rect1"></div> 
+			           <div class="rect2"></div> 
+			           <div class="rect3"></div> 
+			           <div class="rect4"></div> 
+			           <div class="rect5"></div> 
+			        </div>
+			     </div>
+			  </div>
+              <highchart config="chartConfig.cashArea"></highchart>
+          </div>
+        </div>
+      </div>
+      <!-- / stats -->
+
+      <!-- service -->
+      <div class="hbox hbox-auto-xs no-border">
+          <div class="panel relative">
+              <div class="yp-mask-content" ng-show="loading">
+			     <div class="yp-mask"></div>
+			     <div class="yp-mask-loading">
+			        <div class="spinner spinner-sm"> 
+			           <div class="rect1"></div> 
+			           <div class="rect2"></div> 
+			           <div class="rect3"></div> 
+			           <div class="rect4"></div> 
+			           <div class="rect5"></div> 
+			        </div>
+			     </div>
+			  </div>
+              <highchart config="chartConfig.orderArea"></highchart>
+          </div>
+      </div>
+      <!-- / service -->
+
+    </div>
+  </div>
+  <!-- / main -->
+  
+</div>
