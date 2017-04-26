@@ -1,0 +1,129 @@
+/*alternate begin*/
+.alternate-content{
+	position:relative;
+	width:100%;
+	height:225px;
+	margin:0 auto;
+	overflow:hidden;
+}
+/*
+@media (min-width: 268px) and (max-width: 360px) {
+	.alternate-content {
+	    height:160px;
+	}
+}
+@media (min-width: 361px) and (max-width: 400px) {
+	.alternate-content {
+	    height:180px;
+	}
+}
+@media (min-width: 401px) and (max-width: 900px) {
+	.alternate-content {
+	    height:200px;
+	}
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+	.alternate-content {
+	    height:300px;
+	}
+}
+@media (min-width: 1201px) {
+	.alternate-content {
+	    height:400px;
+	}
+}
+*/
+.alternate-content-detail{
+	position:absolute;
+	left:0;
+	top:0;
+	width:1000%;
+	height:100%;
+}
+.alternate-content-detail ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+	height:100%;
+}
+.alternate-content-detail li{
+	width:10%;
+	height:100%;
+	float:left;
+	position:relative;
+	top:0;
+	left:0;
+}
+.alternate-content-detail li img{
+	width:100%;
+}
+.count-area{
+	position:absolute;
+	bottom:1px;
+	left:50%;
+	width:300px;
+	height:20px;
+	margin-left:-150px;
+	text-align:center;
+}
+.count-area ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+.count-area li{
+    width: 15px;
+    height: 3px;
+    margin: 0 8px;
+    background: #f3f9fa;
+    overflow: hidden;
+    display: inline-block;
+	box-shadow: 0 1px 1px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,.2);
+	-o-box-shadow: 0 1px 1px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.2);
+}
+.count-area li.active{
+	background-color:#ffae00;
+}
+.yellow{
+	background-color: yellow;
+}
+.green{
+	background-color: green;
+}
+.red{
+	background-color: red;
+}
+.blue{
+	background-color: #23b7e5;
+}
+.click-left{
+	position:absolute;
+	left:0;
+	top:0;
+	height:100%;
+	width:50px;
+	text-align:center;
+}
+.click-right{
+	position:absolute;
+	right:0;
+	top:0;
+	height:100%;
+	width:50px;
+	text-align:center;
+}
+.click-pointer{
+	position:absolute;
+	left:0;
+	top:50%;
+	width:100%;
+	height:50px;
+	margin-top:-25px;
+	cursor:pointer;
+}
+.click-pointer img{
+	height:50px;
+}
+/*alternate end*/

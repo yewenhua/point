@@ -1,0 +1,69 @@
+/*可以在这里添加你自己的css*/
+
+img {
+    max-width: 100%; /*图片自适应宽度*/
+}
+body {
+    overflow-y: scroll !important;
+}
+.view {
+    word-break: break-all;
+}
+.vote_area {
+    display: block;
+}
+.vote_iframe {
+    background-color: transparent;
+    border: 0 none;
+    height: 100%;
+}
+#edui1_imagescale{display:none !important;} /*去除点击图片后出现的拉伸边框*/
+
+
+/*scrollbar begin*/
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-track-piece {
+	background-color: transparent;
+	-webkit-border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:vertical {
+	height: 6px;
+	background-color: #7F8A8E;
+	-webkit-border-radius: 2px;
+	-webkit-transition: .8s all;
+}
+::-webkit-scrollbar-thumb:horizontal {
+	width: 6px;
+	background-color: #7F8A8E;
+	-webkit-border-radius: 2px;
+	-webkit-transition: .8s all;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+	height: 6px;
+	background-color: #677377;
+	-webkit-border-radius: 2px;
+	-webkit-transition: .8s all;
+}
+::-webkit-scrollbar-thumb:horizontal:hover {
+	height: 6px;
+	background-color: #677377;
+	-webkit-border-radius: 2px;
+	-webkit-transition: .8s all;
+}
+
+html{
+	scrollbar-face-color:#f6f6f6;
+	scrollbar-highlight-color:#fff;
+	scrollbar-shadow-color:#eeeeee;
+	scrollbar-3dlight-color:#eeeeee;
+	scrollbar-arrow-color:#000;
+	scrollbar-track-color:#fff;
+	scrollbar-darkshadow-color:#fff;
+}
+scrollbar {
+	width: 6px;
+}
+/*scrollbar end*/

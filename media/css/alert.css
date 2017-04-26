@@ -1,0 +1,329 @@
+/*alertMessage begin*/
+.alert_area_content{
+	position:relatve;
+	font-family: Microsoft YaHei;
+	z-index:99;
+}
+.animate0{
+   	-webkit-animation-duration: 0.8s;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-duration: 0.8s;
+	-moz-animation-delay: 0s;
+	-moz-animation-timing-function: ease;
+	-moz-animation-fill-mode: both;
+	-ms-animation-duration: 0.8s;
+	-ms-animation-delay: 0s;
+	-ms-animation-timing-function: ease;
+	-ms-animation-fill-mode: both;
+	animation-duration: 0.8s;
+	animation-delay: 0s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;	          
+} 
+.alert_area{
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:250px;
+    height:50px;
+    line-height:50px;
+    margin:-15px -139px;
+    background-color:#000000;
+    padding:10px 15px;
+    text-align:center;
+    border-radius:4px;
+    z-index:998;
+}
+.alert_content{
+	position:fixed;
+    top:50%;
+    left:50%;
+    width:250px;
+    height:50px;
+    line-height:50px;
+    margin:-24px -140px;
+    padding:10px 15px;
+    text-align:center;
+    z-index:999;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    font-family: Microsoft YaHei;
+}
+.fadeInUpTwo {
+	-webkit-animation-name: fadeInUpTwo;
+    -moz-animation-name: fadeInUpTwo;
+    -ms-animation-name: fadeInUpTwo;
+    animation-name: fadeInUpTwo;
+}
+@-webkit-keyframes fadeInUpTwo{
+	0%{opacity:0;-webkit-transform:translateY(20px)}
+	100%{opacity:0.6;-webkit-transform:translateY(0)}
+}
+@-moz-keyframes fadeInUpTwo{
+	0%{opacity:0;-moz-transform:translateY(20px)}
+	100%{opacity:0.6;-moz-transform:translateY(0)}
+}
+@-o-keyframes fadeInUpTwo{
+	0%{opacity:0;-o-transform:translateY(20px)}
+	100%{opacity:0.6;-o-transform:translateY(0)}
+}
+@keyframes fadeInUpTwo{
+	0%{opacity:0;transform:translateY(20px)}
+	100%{opacity:0.6;transform:translateY(0)}
+}
+.fadeInUpText {
+	-webkit-animation-name: fadeInUpText;
+    -moz-animation-name: fadeInUpText;
+    -ms-animation-name: fadeInUpText;
+    animation-name: fadeInUpText;
+}
+@-webkit-keyframes fadeInUpText{
+	0%{opacity:0;-webkit-transform:translateY(20px)}
+	100%{opacity:1;-webkit-transform:translateY(0)}
+}
+@-moz-keyframes fadeInUpText{
+	0%{opacity:0;-moz-transform:translateY(20px)}
+	100%{opacity:1;-moz-transform:translateY(0)}
+}
+@-o-keyframes fadeInUpText{
+	0%{opacity:0;-o-transform:translateY(20px)}
+	100%{opacity:1;-o-transform:translateY(0)}
+}
+@keyframes fadeInUpText{
+	0%{opacity:0;transform:translateY(20px)}
+	100%{opacity:1;transform:translateY(0)}
+}
+/*alertMessage end*/
+
+
+/**
+ * Popups begin
+ * --------------------------------------------------
+ */
+@-webkit-keyframes superScaleIn {
+    from {
+	    -webkit-transform: scale(1.2);
+	    opacity: 0; 
+    }
+    to {
+	    -webkit-transform: scale(1);
+	    opacity: 1; 
+    }
+}
+
+@-moz-keyframes superScaleIn {
+    from {
+	    -moz-transform: scale(1.2);
+	    opacity: 0; 
+    }
+    to {
+	    -moz-transform: scale(1);
+	    opacity: 1; 
+    } 
+}
+
+@keyframes superScaleIn {
+    from {
+	    transform: scale(1.2);
+	    opacity: 0; 
+    }
+    to {
+	    transform: scale(1);
+	    opacity: 1; 
+    } 
+}
+@-webkit-keyframes scaleOut {
+    from {
+	    -webkit-transform: scale(1);
+	    opacity: 1; 
+    }
+    to {
+	    -webkit-transform: scale(0.8);
+	    opacity: 0; 
+    } 
+}
+
+@-moz-keyframes scaleOut {
+    from {
+	    -moz-transform: scale(1);
+	    opacity: 1; 
+    }
+    to {
+	    -moz-transform: scale(0.8);
+	    opacity: 0; 
+    } 
+}
+
+@keyframes scaleOut {
+    from {
+	    transform: scale(1);
+	    opacity: 1; 
+    }
+    to {
+	    transform: scale(0.8);
+	    opacity: 0; 
+    } 
+}
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    z-index: 12;
+    visibility: hidden; 
+    font-family: Microsoft YaHei;
+}
+.popup-container.popup-showing {
+    visibility: visible; 
+}
+.popup-container.popup-hidden .popup {
+    -webkit-animation-name: scaleOut;
+    -moz-animation-name: scaleOut;
+    animation-name: scaleOut;
+    -webkit-animation-duration: 0.1s;
+    -moz-animation-duration: 0.1s;
+    animation-duration: 0.1s;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; 
+}
+.popup-bg{
+    background-color:black;
+    opacity:0.4;
+    position:fixed;
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;
+}
+.popup-container.active .popup {
+    -webkit-animation-name: superScaleIn;
+    -moz-animation-name: superScaleIn;
+    animation-name: superScaleIn;
+    -webkit-animation-duration: 0.2s;
+    -moz-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; 
+}
+.popup-container .popup {
+    width: 250px;
+    max-width: 100%;
+    max-height: 90%;
+    border-radius: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; 
+}
+.popup-head {
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee;
+    text-align: center; 
+}
+.popup-title {
+    margin: 0;
+    padding: 0;
+    font-size: 15px; 
+    font-family: Microsoft YaHei;
+}
+.popup-sub-title {
+    margin: 5px 0 0 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 11px; 
+    font-family: Microsoft YaHei;
+}
+.popup-body {
+    padding: 10px;
+    overflow: auto; 
+    font-family: Microsoft YaHei;
+}
+.popup-buttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 10px;
+    min-height: 65px; 
+}
+.popup-buttons .button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    min-height: 45px;
+    border-radius: 2px;
+    line-height: 20px;
+    margin-right: 5px; 
+}
+.popup-buttons .button:last-child {
+    margin-right: 0px; 
+}
+.popup-open {
+    pointer-events: none; 
+}
+.popup-open.modal-open .modal {
+    pointer-events: none; 
+}
+.popup-open .popup-backdrop, .popup-open .popup {
+    pointer-events: auto; 
+}
+.hide{
+	display:none;
+}
+.max-zindex{
+	z-index:9999999;
+}
+/**
+ * Popups end 
+ * --------------------------------------------------
+ */

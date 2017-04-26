@@ -1,0 +1,180 @@
+/* loading begin */
+.yp-mask-content{
+    position: fixed;
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;
+}
+.yp-mask {
+    top: 0px;
+    height: 100%;
+    background-color:white;
+    opacity:0.6;
+}
+.yp-mask-loading{
+	height:100%; width:100%; z-index:999;position: absolute;top: 0px;left: 0px;
+}
+.spinner {
+    margin: -25px 0 0 -35px;
+}
+.spinner-sm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px !important;
+    height: 50px !important;
+    text-align: center !important;
+    font-size: 10px !important;
+}
+.spinner > div {
+    background-color: #67CF22;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    margin-left: 2px;
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+           transform: scaleY(1.0);
+           -webkit-transform: scaleY(1.0);
+       }
+}
+/* loading end */
+
+
+.ng-animate .bg-auto:before {
+  display: none;
+}
+
+[ui-view].ng-leave {
+  display: none;
+}
+
+[ui-view].ng-leave.smooth {
+  display: block;
+}
+
+.smooth.ng-animate {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fade-in-right-big.ng-enter {
+  -webkit-animation: fadeInRightBig 0.5s;
+          animation: fadeInRightBig 0.5s;
+}
+
+.fade-in-right-big.ng-leave {
+  -webkit-animation: fadeOutLeftBig 0.5s;
+          animation: fadeOutLeftBig 0.5s;
+}
+
+.fade-in-left-big.ng-enter {
+  -webkit-animation: fadeInLeftBig 0.5s;
+          animation: fadeInLeftBig 0.5s;
+}
+
+.fade-in-left-big.ng-leave {
+  -webkit-animation: fadeOutRightBig 0.5s;
+          animation: fadeOutRightBig 0.5s;
+}
+
+.fade-in-up-big.ng-enter {
+  -webkit-animation: fadeInUpBig 0.5s;
+          animation: fadeInUpBig 0.5s;
+}
+
+.fade-in-up-big.ng-leave {
+  -webkit-animation: fadeOutUpBig 0.5s;
+          animation: fadeOutUpBig 0.5s;
+}
+
+.fade-in-down-big.ng-enter {
+  -webkit-animation: fadeInDownBig 0.5s;
+          animation: fadeInDownBig 0.5s;
+}
+
+.fade-in-down-big.ng-leave {
+  -webkit-animation: fadeOutDownBig 0.5s;
+          animation: fadeOutDownBig 0.5s;
+}
+
+.fade-in.ng-enter {
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s;
+}
+
+.fade-in.ng-leave {
+  -webkit-animation: fadeOut 0.5s;
+          animation: fadeOut 0.5s;
+}
+
+.fade-in-right.ng-enter {
+  -webkit-animation: fadeInRight 0.5s;
+          animation: fadeInRight 0.5s;
+}
+
+.fade-in-right.ng-leave {
+  -webkit-animation: fadeOutLeft 0.5s;
+          animation: fadeOutLeft 0.5s;
+}
+
+.fade-in-left.ng-enter {
+  -webkit-animation: fadeInLeft 0.5s;
+          animation: fadeInLeft 0.5s;
+}
+
+.fade-in-left.ng-leave {
+  -webkit-animation: fadeOutRight 0.5s;
+          animation: fadeOutRight 0.5s;
+}
+
+.fade-in-up.ng-enter {
+  -webkit-animation: fadeInUp 0.5s;
+          animation: fadeInUp 0.5s;
+}
+
+.fade-in-up.ng-leave {
+  -webkit-animation: fadeOutUp 0.5s;
+          animation: fadeOutUp 0.5s;
+}
+
+.fade-in-down.ng-enter {
+  -webkit-animation: fadeInDown 0.5s;
+          animation: fadeInDown 0.5s;
+}
+
+.fade-in-down.ng-leave {
+  -webkit-animation: fadeOutDown 0.5s;
+          animation: fadeOutDown 0.5s;
+}
